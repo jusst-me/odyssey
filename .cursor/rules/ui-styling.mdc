@@ -21,6 +21,8 @@ Tailwind CSS v4 (CSS-first `@theme`) + shadcn/ui. Tokens live in
 - Dark mode is class-based (`.dark`); rely on semantic tokens so it "just works".
 - Multi-market theming overrides **semantic** tokens only (`--primary`, `--background`, ...),
   never the primitive scales.
+- **Accessibility is mandatory** (see `accessibility.mdc`): AA contrast for every token
+  pairing, visible focus states, and full keyboard operability on all interactive UI.
 
 ```tsx
 // ❌ BAD

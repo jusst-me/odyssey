@@ -17,7 +17,9 @@ authoritative.
 
 - **Reusability first**: shared behaviour goes in `packages/*`, never copy-pasted into apps.
 - **Strict TypeScript**: no `any`, no unchecked casts; model data with real types.
-- **Accessible, performant UI**: RSC by default, caching/ISR, semantic HTML, focus states.
+- **Accessible, performant UI**: WCAG 2.2 AA is a hard requirement — AA colour contrast,
+  full keyboard operability and visible focus (see `accessibility.mdc`). RSC by default,
+  caching/ISR, semantic HTML.
 - **This is a real business**, not a prototype — hold code to production standards.
 
 ## Design source of truth

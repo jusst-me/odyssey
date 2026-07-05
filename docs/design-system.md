@@ -21,8 +21,10 @@ using Tailwind CSS v4's CSS-first `@theme` configuration, and are consumed by al
    - **Primitive tokens** — raw colour scales (`--brand-500`, `--neutral-200`, ...). Stable.
    - **Semantic tokens** — role-based variables (`--background`, `--primary`, ...) that map
      to primitives. A market overrides these, never the primitives.
-4. **Accessible by default** — colour pairings target WCAG AA for body text; interactive
-   states have visible focus rings.
+4. **Accessible by default (WCAG 2.2 AA)** — a hard requirement. Colour pairings meet AA
+   contrast (>= 4.5:1 text, >= 3:1 large text and non-text UI) in both light and dark mode;
+   all interactive UI is keyboard-operable with a visible focus indicator. See
+   `.cursor/rules/accessibility.mdc`.
 5. **shadcn/ui compatible** — semantic variables follow the shadcn naming convention so
    shadcn components work without modification.
 

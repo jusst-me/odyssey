@@ -21,8 +21,10 @@ travel offers and high-quality editorial travel content.
 
 - **Reusability first.** Anything usable by more than one app belongs in a shared `packages/*`
   package, not copied into an app. Think "platform", not "one website".
-- **High quality.** Strict TypeScript, no `any` escape hatches, accessible UI, sensible
-  performance defaults (RSC, caching/ISR). This is a real business, not a prototype.
+- **High quality.** Strict TypeScript, no `any` escape hatches, sensible performance defaults
+  (RSC, caching/ISR). This is a real business, not a prototype.
+- **Accessible (WCAG 2.2 AA).** Accessibility is a hard requirement: AA colour contrast, full
+  keyboard operability and visible focus states on all UI. See `.cursor/rules/accessibility.mdc`.
 - **AI-friendly.** Keep this file and `docs/` accurate. Prefer clear structure and small,
   well-typed modules so future agents have unambiguous context.
 
@@ -82,5 +84,6 @@ pnpm format           # prettier write
 - Type-checks (`pnpm type-check`) and lint (`pnpm lint`) pass.
 - New shared behaviour lives in the right `packages/*` package.
 - No hard-coded colours/spacing; uses design tokens.
+- Accessible: WCAG 2.2 AA contrast, keyboard-operable with visible focus, semantic markup.
 - Env vars documented in the relevant `.env.example`.
 - Corresponding Linear ticket updated.
