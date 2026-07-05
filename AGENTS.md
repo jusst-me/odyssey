@@ -72,7 +72,9 @@ odyssey/
   `Area/Department` labels); development tickets are assigned to Justin. See
   `.cursor/rules/linear.mdc`.
 - **Git**: every commit (agents included) follows [Conventional Commits](https://www.conventionalcommits.org)
-  (`feat:`, `fix:`, `chore:`, `docs:`, ...). See `.cursor/rules/git-github.mdc`.
+  (`feat:`, `fix:`, `chore:`, `docs:`, ...). Branches use `feature/<linear-code>-<desc>` (only
+  `feature` or `hotfix` prefixes), e.g. `feature/jus-51-testing-tooling`. See
+  `.cursor/rules/git-github.mdc`.
 
 ## Common commands
 

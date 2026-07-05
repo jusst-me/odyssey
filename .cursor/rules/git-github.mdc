@@ -10,8 +10,18 @@ Version control is GitHub. Keep history clean and reviewable.
 ## Branches
 
 - `main` is always deployable. Never commit directly to `main` for feature work.
-- Branch names: `<type>/<short-desc>` — e.g. `feat/homepage-hero`, `fix/feed-parsing`,
-  `chore/ci`.
+- Branch names use the format: `feature/<linear-code>-<shortened-branch-name>`.
+- The prefix is **only ever `feature` or `hotfix`** — no other prefixes (regardless of the
+  ticket's `Type` label; a chore/docs ticket still uses `feature/`). Use `hotfix/` only for
+  urgent fixes to production.
+- Always include the **Linear ticket code** (lowercase, e.g. `jus-51`) followed by a short,
+  hyphenated description.
+- Examples: `feature/jus-51-testing-tooling`, `feature/jus-24-homepage-hero`,
+  `hotfix/jus-99-feed-parsing-crash`.
+
+> Note: branch prefixes (`feature`/`hotfix`) are separate from commit types. Commits still
+> follow Conventional Commits (see below), so a `feature/` branch can contain `chore:` or
+> `docs:` commits.
 
 ## Commits
 
