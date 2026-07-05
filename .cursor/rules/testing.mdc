@@ -1,0 +1,57 @@
+---
+description: Testing stack and conventions (Vitest, React Testing Library, Playwright, axe)
+globs: **/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Testing
+
+High quality is a hard requirement, so **test where it adds value**. Favour a small number of
+fast, meaningful tests over chasing a coverage number. See `docs/testing.md` for the full
+rationale.
+
+## Stack
+
+- **Vitest** — unit & integration test runner (ESM/TS-native, fast, Jest-compatible API,
+  first-class in a Turborepo/pnpm monorepo). The default for everything non-E2E.
+- **React Testing Library** (+ `@testing-library/jest-dom`, `@testing-library/user-event`)
+  on **jsdom** — component behaviour tests for `packages/ui` and client components.
+- **vitest-axe** — automated accessibility assertions inside component tests (ties into the
+  WCAG 2.2 AA requirement; see `accessibility.mdc`).
+- **Playwright** (+ `@axe-core/playwright`) — end-to-end tests for the Next.js apps: real
+  routing, RSC rendering, navigation, keyboard flows and page-level a11y scans.
+
+Do not introduce Jest/Cypress/Enzyme — keep the stack consistent across the monorepo.
+
+## What to test (by priority)
+
+1. **Pure logic — always.** `packages/utils`, `packages/tradetracker` (feed parsing &
+   normalization), `packages/cms` (query building, `market` filtering). Highest ROI; unit-test
+   thoroughly including edge cases and malformed feed data.
+2. **Shared UI components** in `packages/ui` — test **behaviour, not implementation**
+   (what the user sees/does). Include a keyboard-interaction test and a `vitest-axe` check.
+3. **Critical app flows** — a few Playwright smoke/E2E tests per app (page renders, primary
+   navigation, key CTA, offer listing). Not every page.
+
+## Conventions
+
+- Co-locate unit/component tests as `*.test.ts` / `*.test.tsx` next to the source.
+- Playwright E2E lives in `apps/<app>/e2e/` as `*.spec.ts`.
+- Name tests by behaviour ("renders the CTA", "filters offers by market"), not by method name.
+- Query by accessible role/label/text (RTL) — this doubles as an accessibility check. Avoid
+  `data-testid` unless there is no accessible alternative.
+- **Async Server Components:** don't over-mock them in unit tests. Extract logic into pure,
+  testable functions (unit-tested) and cover the rendered result with Playwright.
+- Every **bug fix ships with a regression test** that fails before the fix.
+- Mock network/feeds at the boundary; never hit live TradeTracker/Sanity in unit tests. Use
+  fixtures for feed XML and GROQ responses.
+
+## Commands
+
+```bash
+pnpm test          # run unit/component tests (turbo → vitest) across the repo
+pnpm test:e2e      # run Playwright E2E (per app)
+```
+
+Tests must pass before a change is considered done. Once the pre-commit hook (husky) lands,
+the fast unit suite + lint run automatically on commit.

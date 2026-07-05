@@ -20,6 +20,9 @@ authoritative.
 - **Accessible, performant UI**: WCAG 2.2 AA is a hard requirement — AA colour contrast,
   full keyboard operability and visible focus (see `accessibility.mdc`). RSC by default,
   caching/ISR, semantic HTML.
+- **Tested where it adds value**: unit-test pure logic, behaviour+a11y-test shared UI, E2E the
+  critical flows. Vitest + RTL + Playwright + axe (see `testing.mdc`). Bug fixes get a
+  regression test.
 - **This is a real business**, not a prototype — hold code to production standards.
 
 ## Design source of truth
@@ -30,5 +33,6 @@ authoritative.
 
 ## Definition of Done
 
-`pnpm type-check` and `pnpm lint` pass · no hard-coded colours/spacing · env vars documented
-in `.env.example` · shared logic placed in the correct package · Linear ticket updated.
+`pnpm type-check`, `pnpm lint` and `pnpm test` pass · new shared logic/bug fixes have tests ·
+no hard-coded colours/spacing · env vars documented in `.env.example` · shared logic placed in
+the correct package · Linear ticket updated.

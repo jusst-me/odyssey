@@ -23,6 +23,9 @@ travel offers and high-quality editorial travel content.
   package, not copied into an app. Think "platform", not "one website".
 - **High quality.** Strict TypeScript, no `any` escape hatches, sensible performance defaults
   (RSC, caching/ISR). This is a real business, not a prototype.
+- **Tested where it adds value.** Pure logic (utils, feed parsing, CMS queries) is unit-tested;
+  shared UI has behaviour + a11y tests; critical flows have E2E smoke tests. Vitest + React
+  Testing Library + Playwright + axe. See `.cursor/rules/testing.mdc` and `docs/testing.md`.
 - **Accessible (WCAG 2.2 AA).** Accessibility is a hard requirement: AA colour contrast, full
   keyboard operability and visible focus states on all UI. See `.cursor/rules/accessibility.mdc`.
 - **AI-friendly.** Keep this file and `docs/` accurate. Prefer clear structure and small,
@@ -36,6 +39,7 @@ travel offers and high-quality editorial travel content.
 - **Styling:** Tailwind CSS v4 (CSS-first `@theme`) + shadcn/ui, tokens in `packages/ui`
 - **CMS:** Sanity — one shared project/dataset, content scoped per `market`
 - **Affiliate data:** TradeTracker XML product feeds (server-side fetch + ISR now; DB sync later)
+- **Testing:** Vitest + React Testing Library (jsdom) · Playwright for E2E · axe for a11y
 - **Hosting:** Vercel · **VCS:** GitHub · **Project management:** Linear
 
 ## Repository layout
@@ -67,6 +71,8 @@ odyssey/
 - **Linear**: used company-wide (not just dev). Every ticket is categorized (team + `Type` +
   `Area/Department` labels); development tickets are assigned to Justin. See
   `.cursor/rules/linear.mdc`.
+- **Git**: every commit (agents included) follows [Conventional Commits](https://www.conventionalcommits.org)
+  (`feat:`, `fix:`, `chore:`, `docs:`, ...). See `.cursor/rules/git-github.mdc`.
 
 ## Common commands
 
@@ -76,12 +82,15 @@ pnpm dev              # run all dev servers (turbo)
 pnpm build            # build everything (turbo)
 pnpm lint             # lint all packages
 pnpm type-check       # type-check all packages
+pnpm test             # run unit/component tests (turbo → vitest)
+pnpm test:e2e         # run Playwright E2E (per app)
 pnpm format           # prettier write
 ```
 
 ## Definition of Done
 
 - Type-checks (`pnpm type-check`) and lint (`pnpm lint`) pass.
+- Tests pass; new shared logic and bug fixes ship with tests (`.cursor/rules/testing.mdc`).
 - New shared behaviour lives in the right `packages/*` package.
 - No hard-coded colours/spacing; uses design tokens.
 - Accessible: WCAG 2.2 AA contrast, keyboard-operable with visible focus, semantic markup.
