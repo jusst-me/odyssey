@@ -73,8 +73,8 @@ odyssey/
   `.cursor/rules/linear.mdc`.
 - **Git**: every commit (agents included) follows [Conventional Commits](https://www.conventionalcommits.org)
   (`feat:`, `fix:`, `chore:`, `docs:`, ...). Branches use `feature/<linear-code>-<desc>` (only
-  `feature` or `hotfix` prefixes), e.g. `feature/jus-51-testing-tooling`. See
-  `.cursor/rules/git-github.mdc`.
+  `feature` or `hotfix` prefixes), e.g. `feature/jus-51-testing-tooling`. Husky hooks enforce
+  this (commitlint) and run lint/type-check/test on commit. See `.cursor/rules/git-github.mdc`.
 
 ## Common commands
 

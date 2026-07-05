@@ -14,12 +14,12 @@ explains **which tools we use, why, and what we test**. The enforceable conventi
 
 ## The stack
 
-| Layer                 | Tool                                                        | Why |
-| --------------------- | ----------------------------------------------------------- | --- |
-| Unit & integration    | **Vitest**                                                  | ESM/TypeScript-native, very fast, Jest-compatible API, first-class support in a Vite/Turborepo/pnpm monorepo with shared config. |
-| Component             | **React Testing Library** + `@testing-library/user-event` on **jsdom** | Encourages accessible, behaviour-driven tests (query by role/label). |
-| Accessibility (unit)  | **vitest-axe**                                              | Automated WCAG checks inside component tests; complements manual keyboard/contrast review. |
-| End-to-end            | **Playwright** + `@axe-core/playwright`                     | Real routing, RSC rendering, cross-browser, keyboard flows, page-level a11y scans. |
+| Layer                | Tool                                                                   | Why                                                                                                                              |
+| -------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Unit & integration   | **Vitest**                                                             | ESM/TypeScript-native, very fast, Jest-compatible API, first-class support in a Vite/Turborepo/pnpm monorepo with shared config. |
+| Component            | **React Testing Library** + `@testing-library/user-event` on **jsdom** | Encourages accessible, behaviour-driven tests (query by role/label).                                                             |
+| Accessibility (unit) | **vitest-axe**                                                         | Automated WCAG checks inside component tests; complements manual keyboard/contrast review.                                       |
+| End-to-end           | **Playwright** + `@axe-core/playwright`                                | Real routing, RSC rendering, cross-browser, keyboard flows, page-level a11y scans.                                               |
 
 ### Why Vitest over Jest
 
@@ -80,4 +80,9 @@ The tooling is wired up (JUS-51):
 > tests catch structural/ARIA issues while **Playwright + @axe-core/playwright** performs the
 > full WCAG scan (contrast included) against the running app.
 
-The **husky pre-commit hook** (JUS-52) is still to be implemented.
+## Pre-commit hook
+
+A husky **pre-commit** hook runs `lint-staged` (Prettier on staged files) followed by
+`turbo run lint type-check test` (Turbo cache keeps this fast). A **commit-msg** hook runs
+commitlint to enforce Conventional Commits. Playwright E2E stays out of the hook (CI only).
+Hooks install automatically via the root `prepare` script on `pnpm install`.
