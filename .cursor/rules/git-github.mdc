@@ -58,4 +58,5 @@ before a commit is accepted. Hooks install automatically via the `prepare` scrip
 
 - Open PRs into `main`; keep them scoped and small where possible.
 - Reference the related Linear ticket in the PR description.
-- CI (lint + type-check + build) must pass before merge.
+- CI (GitHub Actions, `.github/workflows/ci.yml`) must pass before merge: format check,
+  lint, type-check, test and build, plus Playwright E2E.
