@@ -5,7 +5,8 @@
   "type": "module",
   "files": [
     "tsconfig",
-    "eslint"
+    "eslint",
+    "vitest"
   ],
   "exports": {
     "./tsconfig/base.json": "./tsconfig/base.json",
@@ -13,15 +14,21 @@
     "./tsconfig/react-library.json": "./tsconfig/react-library.json",
     "./eslint/base": "./eslint/base.js",
     "./eslint/next": "./eslint/next.js",
-    "./eslint/react-library": "./eslint/react-library.js"
+    "./eslint/react-library": "./eslint/react-library.js",
+    "./vitest/base": "./vitest/base.js",
+    "./vitest/react": "./vitest/react.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.18.0",
+    "@testing-library/jest-dom": "^6.9.1",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
     "globals": "^15.14.0",
-    "typescript-eslint": "^8.21.0"
+    "jsdom": "^29.1.1",
+    "typescript-eslint": "^8.21.0",
+    "vitest": "^4.1.9",
+    "vitest-axe": "^0.1.0"
   }
 }

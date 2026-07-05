@@ -61,8 +61,23 @@ pnpm test          # unit/component tests (turbo → vitest)
 pnpm test:e2e      # Playwright E2E per app
 ```
 
-## Status
+## Setup
 
-The conventions above are authoritative now. Installing and wiring the tooling
-(Vitest/RTL/Playwright/axe configs per package) and the **husky pre-commit hook** are tracked
-as separate Linear tickets and are not yet implemented.
+The tooling is wired up (JUS-51):
+
+- Shared Vitest presets live in `@odyssey/config/vitest/base` (Node) and
+  `@odyssey/config/vitest/react` (jsdom + Testing Library + jest-dom + vitest-axe matchers).
+- A package opts in by adding a `vitest.config.ts` that re-exports the relevant preset and a
+  `"test": "vitest run"` script. Currently wired: `@odyssey/utils` (base) and `@odyssey/ui`
+  (react). Add the same for `cms`/`tradetracker` once they have real logic.
+- React packages that assert accessibility add a `src/vitest.d.ts` referencing the matcher
+  types (see `packages/ui/src/vitest.d.ts`).
+- E2E lives in `apps/<app>/e2e/*.spec.ts` with a `playwright.config.ts` and a
+  `"test:e2e": "playwright test"` script. Run `pnpm exec playwright install chromium` once to
+  fetch the browser. The config boots `next dev` automatically.
+
+> Note: `vitest-axe` cannot check colour contrast under jsdom (no real layout), so component
+> tests catch structural/ARIA issues while **Playwright + @axe-core/playwright** performs the
+> full WCAG scan (contrast included) against the running app.
+
+The **husky pre-commit hook** (JUS-52) is still to be implemented.
