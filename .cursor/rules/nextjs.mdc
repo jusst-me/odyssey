@@ -1,0 +1,19 @@
+---
+description: Next.js 16 App Router conventions
+globs: apps/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Next.js 16 (App Router)
+
+- **Server Components by default.** Add `'use client'` only when you need state, effects or
+  browser APIs, and push it to the smallest leaf component.
+- Fetch data in server components. Use `fetch` caching / `revalidate` (ISR) for external data
+  (Sanity, TradeTracker) — pick a sensible revalidation window per source.
+- Use the `Metadata` API for SEO (title/description/OG); no manual `<head>` tags.
+- Use `next/font` (already wired: Fraunces + Inter as CSS variables) and `next/image` for
+  media — never raw `<img>` for content images.
+- App-specific UI composes shared components from `@odyssey/ui`; if a component is reusable
+  across apps, add it to `@odyssey/ui` instead.
+- Keep route handlers/server actions typed; never leak server-only secrets to client
+  components (only `NEXT_PUBLIC_*` reaches the browser).

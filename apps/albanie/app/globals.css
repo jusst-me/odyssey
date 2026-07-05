@@ -1,0 +1,7 @@
+/* App CSS entry. Pulls in the shared Odyssey design system (which imports
+   Tailwind) and registers the shared UI package as a Tailwind content source
+   (it lives in node_modules via the workspace symlink and is otherwise skipped). */
+@import '@odyssey/ui/styles.css';
+
+@source "../../../packages/ui/src";
+@source "../app";

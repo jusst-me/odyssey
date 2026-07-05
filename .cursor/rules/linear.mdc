@@ -1,0 +1,32 @@
+---
+description: Linear ticket conventions — company-wide categorization and assignment
+alwaysApply: true
+---
+
+# Linear Conventions
+
+Linear is used **company-wide** (not just app development): marketing, content, finance,
+operations and legal all live here too. Because of that, **every ticket must be categorized**
+so work stays findable across departments.
+
+## Mandatory on every ticket
+
+- **Team** — the owning team.
+- **`Type` label** — one of: `Feature`, `Bug`, `Chore`, `Research`, `Content`, `Design`.
+- **`Area/Department` label** — one of: `Development`, `Design`, `Marketing`, `Content`,
+  `Finance`, `Operations`, `Legal`.
+- **Project** — link to the relevant project (e.g. "Odyssey") when applicable.
+- Optional **`Platform/App`** label (`Albanie`, `Shared`) for product work.
+
+## Assignment
+
+- **All development-related tickets are assigned to Justin** (the engineer). If a ticket has
+  `Area/Department: Development` (or a dev `Platform/App` label), set the assignee to Justin
+  unless told otherwise.
+
+## Creating tickets via MCP
+
+- Before creating tickets, inspect existing teams/labels and **reuse** them — do not create
+  duplicate labels with different casing/wording.
+- Titles are concise and action-oriented; descriptions state intent + acceptance criteria.
+- Group related work under an epic/parent where it helps.

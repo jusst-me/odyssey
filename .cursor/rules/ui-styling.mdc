@@ -1,0 +1,31 @@
+---
+description: UI, Tailwind v4 and design-token conventions
+globs: **/*.{tsx,css}
+alwaysApply: false
+---
+
+# UI & Styling
+
+Tailwind CSS v4 (CSS-first `@theme`) + shadcn/ui. Tokens live in
+`packages/ui/src/styles/theme.css`; rationale in `docs/design-system.md`.
+
+## Rules
+
+- **Use semantic utilities**, not hard-coded colours: `bg-background`, `text-foreground`,
+  `bg-primary`, `text-primary-foreground`, `bg-accent`, `border-border`, `ring-ring`.
+  Primitive scales (`bg-brand-500`, `text-sun-600`, `neutral-*`) are for rare brand moments.
+- **Never** write hex values or arbitrary colours (`text-[#...]`) in components.
+- Shared, reusable components live in `@odyssey/ui`. Compose them in apps; don't fork them.
+- Follow shadcn/ui patterns: `cva` for variants, `cn()` from `@odyssey/ui/lib/utils` to merge
+  classes, `asChild` via Radix `Slot` for polymorphism.
+- Dark mode is class-based (`.dark`); rely on semantic tokens so it "just works".
+- Multi-market theming overrides **semantic** tokens only (`--primary`, `--background`, ...),
+  never the primitive scales.
+
+```tsx
+// ❌ BAD
+<div className="bg-[#2892a7] text-white" />
+
+// ✅ GOOD
+<div className="bg-primary text-primary-foreground" />
+```

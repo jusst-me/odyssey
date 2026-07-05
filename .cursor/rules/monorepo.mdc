@@ -1,0 +1,29 @@
+---
+description: Turborepo/pnpm monorepo structure and conventions
+alwaysApply: true
+---
+
+# Monorepo Conventions
+
+Turborepo + pnpm workspaces. Apps are thin; reusable capability lives in packages.
+
+## Where things go
+
+- `apps/*` — deployable Next.js apps, one per market. App-specific composition only.
+- `packages/ui` — shared React components + Tailwind theme/design tokens.
+- `packages/cms` — Sanity client, GROQ helpers, schemas, `market` convention.
+- `packages/tradetracker` — feed fetch/parse/normalize.
+- `packages/utils` — framework-agnostic helpers.
+- `packages/config` — shared `tsconfig` + ESLint flat configs.
+
+## Rules
+
+- Packages are named `@odyssey/*`. Import across packages via the package name, e.g.
+  `import { Button } from '@odyssey/ui'` — **never** deep relative paths like
+  `../../packages/ui/src/...`.
+- Add cross-package deps with `"workspace:*"` and list them in the app's `transpilePackages`
+  (see `apps/albanie/next.config.ts`).
+- Shared tsconfig/eslint come from `@odyssey/config`; don't redefine base rules per package.
+- If code is used by more than one app, move it into a package instead of duplicating.
+- Prefer `pnpm --filter <pkg>` for scoped work; run `pnpm build/lint/type-check` from root
+  (Turbo) before finishing.

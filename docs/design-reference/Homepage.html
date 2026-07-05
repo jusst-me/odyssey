@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BUKURA · Albanië Reisgids — Onontdekt, authentiek, betaalbaar</title>
+<meta name="description" content="Dé Nederlandstalige reisgids voor Albanië. Strandtips aan de Riviera, auto huren, reisbudget, bergtochten in Theth en de mooiste hotels — getest en eerlijk.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+/* ---------- Homepage-specifiek ---------- */
+.hero{ position:relative; background:var(--ink); color:var(--limestone); overflow:hidden; }
+.hero .ph{
+  position:absolute; inset:0; border-radius:0; min-height:0;
+  background:#123c40;
+  background-image:
+    linear-gradient(180deg, rgba(20,16,12,.30) 0%, rgba(20,16,12,.78) 100%),
+    repeating-linear-gradient(45deg, rgba(0,0,0,.10) 0 14px, rgba(0,0,0,0) 14px 28px);
+}
+.hero__inner{ position:relative; padding:118px 0 92px; max-width:760px; }
+.hero h1{ color:#fff; }
+.hero .lead{ color:#e8dec9; max-width:54ch; }
+.hero .hero-cta{ display:flex; gap:14px; flex-wrap:wrap; margin-top:30px; }
+.hero .hero-stats{ display:flex; gap:40px; margin-top:46px; flex-wrap:wrap; }
+.hero .hero-stats > div{ min-width:120px; }
+.hero .hero-stats .n{ font-family:var(--display); font-weight:800; font-size:2rem; color:var(--ochre); line-height:1; white-space:nowrap; }
+.hero .hero-stats .l{ font-family:var(--display); font-size:.82rem; color:#cdbfa6; letter-spacing:.04em; margin-top:6px; }
+.hero .eyebrow{ color:var(--ochre); }
+.hero .eyebrow::before{ background:var(--ochre); }
+
+/* USP */
+.usp-grid{ grid-template-columns:repeat(3,1fr); }
+.usp{ background:var(--paper); border:1px solid var(--sand-line); border-radius:8px; padding:30px 28px 32px; position:relative; }
+.usp .ic{ width:46px; height:46px; transform:rotate(45deg); display:grid; place-items:center; border-radius:7px; margin-bottom:20px; }
+.usp .ic span{ transform:rotate(-45deg); font-family:var(--display); font-weight:800; color:#fff; font-size:1.2rem; }
+.usp:nth-child(1) .ic{ background:var(--oxblood); }
+.usp:nth-child(2) .ic{ background:var(--adriatic); }
+.usp:nth-child(3) .ic{ background:var(--ochre); }
+.usp h3{ font-size:1.35rem; }
+.usp p{ margin:0; color:var(--ink-soft); font-size:1rem; }
+
+/* Budget calculator (signature) */
+.calc{ background:var(--ink); color:var(--limestone); border-radius:14px; overflow:hidden; display:grid; grid-template-columns:1fr 1fr; box-shadow:var(--shadow-md); }
+.calc__controls{ padding:46px; }
+.calc__controls h2{ color:#fff; }
+.calc__result{ background:var(--adriatic-d); padding:46px; position:relative; }
+.calc__result::before{ content:""; position:absolute; inset:0; background:repeating-linear-gradient(45deg, rgba(255,255,255,.03) 0 12px, transparent 12px 24px); pointer-events:none; }
+.calc label{ font-family:var(--display); font-weight:600; font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ochre); display:block; margin:22px 0 12px; }
+.calc label:first-of-type{ margin-top:14px; }
+.seg{ display:flex; gap:8px; flex-wrap:wrap; }
+.seg button{
+  font-family:var(--display); font-weight:600; font-size:.92rem; cursor:pointer;
+  background:transparent; color:#e8dec9; border:1.5px solid #4a5f5a; border-radius:var(--radius);
+  padding:.6em 1em; transition:.15s ease;
+}
+.seg button.active{ background:var(--ochre); color:var(--ink); border-color:var(--ochre); }
+.seg button:hover:not(.active){ border-color:var(--ochre); }
+.calc input[type=range]{ width:100%; accent-color:var(--ochre); }
+.calc .days-val{ font-family:var(--display); font-weight:800; color:#fff; font-size:1.1rem; }
+.calc__result .eyebrow{ color:var(--ochre); }
+.calc__result .eyebrow::before{ background:var(--ochre); }
+.calc .total{ font-family:var(--display); font-weight:800; font-size:3.4rem; color:#fff; line-height:1; margin:6px 0 4px; }
+.calc .total small{ font-size:1rem; font-weight:600; color:#bfe0dc; }
+.calc .breakdown{ margin:24px 0 8px; border-top:1px solid rgba(255,255,255,.16); }
+.calc .breakdown .row{ display:flex; justify-content:space-between; align-items:center; padding:11px 0; border-bottom:1px solid rgba(255,255,255,.12); font-family:var(--display); font-size:.95rem; }
+.calc .breakdown .row b{ color:#fff; font-weight:700; }
+.calc .breakdown .row .dot{ width:9px; height:9px; border-radius:2px; display:inline-block; margin-right:9px; transform:rotate(45deg); }
+.calc .perday{ font-family:var(--display); font-size:.9rem; color:#bfe0dc; }
+
+/* layout: content + sidebar */
+.main-cols{ display:grid; grid-template-columns:1fr 320px; gap:48px; align-items:start; }
+.sidebar{ position:sticky; top:96px; display:flex; flex-direction:column; gap:28px; }
+.side-box{ background:var(--paper); border:1px solid var(--sand-line); border-radius:8px; padding:22px; }
+.side-box h4{ font-family:var(--display); font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; color:var(--oxblood); margin:0 0 14px; }
+.side-list a{ display:flex; gap:12px; align-items:flex-start; padding:11px 0; border-bottom:1px solid var(--sand-line); }
+.side-list a:last-child{ border-bottom:none; }
+.side-list .n{ font-family:var(--display); font-weight:800; color:var(--sand-line); font-size:1.3rem; line-height:1; }
+.side-list .t{ font-family:var(--display); font-weight:600; font-size:.95rem; color:var(--ink); line-height:1.25; }
+.side-list a:hover .t{ color:var(--oxblood); }
+
+/* category strip */
+.cat-grid{ grid-template-columns:repeat(4,1fr); }
+.cat-card{ position:relative; border-radius:8px; overflow:hidden; min-height:240px; display:flex; align-items:flex-end; color:#fff; }
+.cat-card .ph{ position:absolute; inset:0; border-radius:0; min-height:0; }
+.cat-card .ph::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 30%, rgba(20,16,12,.82)); }
+.cat-card .cc{ position:relative; padding:22px; z-index:2; }
+.cat-card .cc .k{ font-family:var(--display); font-weight:600; font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ochre); }
+.cat-card .cc h3{ color:#fff; margin:6px 0 0; font-size:1.4rem; }
+.cat-card:hover .cc h3{ color:var(--ochre); }
+
+/* destinations */
+.dest-grid{ grid-template-columns:repeat(3,1fr); }
+
+.feat-row{ display:grid; grid-template-columns:1.15fr 1fr; gap:0; background:var(--paper); border:1px solid var(--sand-line); border-radius:12px; overflow:hidden; }
+.feat-row .ph{ border-radius:0; min-height:340px; }
+.feat-row .fr-body{ padding:48px; }
+
+@media (max-width:980px){
+  .usp-grid{ grid-template-columns:1fr; }
+  .calc{ grid-template-columns:1fr; }
+  .main-cols{ grid-template-columns:1fr; }
+  .sidebar{ position:static; flex-direction:row; flex-wrap:wrap; }
+  .side-box{ flex:1 1 280px; }
+  .cat-grid{ grid-template-columns:repeat(2,1fr); }
+  .dest-grid{ grid-template-columns:1fr 1fr; }
+  .feat-row{ grid-template-columns:1fr; }
+  .feat-row .ph{ min-height:220px; }
+}
+@media (max-width:560px){
+  .cat-grid,.dest-grid{ grid-template-columns:1fr; }
+  .calc__controls,.calc__result{ padding:30px 24px; }
+  .feat-row .fr-body{ padding:30px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== TOP UTILITY BAR ===== -->
+<div class="topbar">
+  <div class="wrap">
+    <span>🦅 Onafhankelijke reisgids · sinds 2019 · 1 EUR ≈ 98 Lek</span>
+    <div class="tb-links">
+      <a href="#nieuwsbrief">Nieuwsbrief</a>
+      <a href="Blogpost.html">Reisblog</a>
+      <a href="#">Over ons</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HEADER / NAV ===== -->
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="Homepage.html">
+      <span class="mark"></span>
+      <span class="name">BUKURA<small>ALBANIË REISGIDS</small></span>
+    </a>
+    <nav class="nav">
+      <div class="has-menu"><a href="#bestemmingen">Bestemmingen ▾</a>
+        <div class="dropdown">
+          <a href="#">Albanese Riviera &amp; kust</a>
+          <a href="#">Ksamil &amp; Saranda</a>
+          <a href="#">Theth &amp; Valbona (bergen)</a>
+          <a href="#">Berat &amp; Gjirokastër</a>
+          <a href="#">Tirana &amp; Shkodër</a>
+        </div>
+      </div>
+      <div class="has-menu"><a href="#">Praktisch ▾</a>
+        <div class="dropdown">
+          <a href="#">Visum &amp; inreizen</a>
+          <a href="#">Reisbudget &amp; geld</a>
+          <a href="#">Veiligheid</a>
+          <a href="#">Beste reistijd</a>
+          <a href="#">Taal &amp; cultuur</a>
+        </div>
+      </div>
+      <div class="has-menu"><a href="#">Accommodatie ▾</a>
+        <div class="dropdown">
+          <a href="Blogpost.html">Beste hotels kust</a>
+          <a href="#">Guesthouses in de bergen</a>
+          <a href="#">Appartementen Tirana</a>
+        </div>
+      </div>
+      <div class="has-menu"><a href="#">Vervoer ▾</a>
+        <div class="dropdown">
+          <a href="Blogpost.html">Auto huren in Albanië</a>
+          <a href="#">Bussen &amp; furgon</a>
+          <a href="#">Veerboten &amp; ferry's</a>
+        </div>
+      </div>
+      <a href="Blogpost.html">Blog</a>
+    </nav>
+    <div class="header-cta">
+      <button class="icon-btn" aria-label="Zoeken">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <a href="#nieuwsbrief" class="btn btn-primary">Reisupdates</a>
+      <button class="icon-btn nav-toggle" aria-label="Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="ph"><span class="ph__tag" style="position:absolute;bottom:0;left:0">FOTO — Ksamil, Albanese Riviera (full-bleed, 1920×1080)</span></div>
+  <div class="wrap">
+    <div class="hero__inner">
+      <span class="eyebrow">Europa's laatste onontdekte kust</span>
+      <h1>Ontdek Albanië zoals het écht is</h1>
+      <p class="lead">Turquoise baaien zonder massatoerisme, ruige bergen, Ottomaanse stadjes en prijzen van twintig jaar geleden. Wij reisden het land af en delen eerlijke tips — van Ksamil tot Theth.</p>
+      <div class="hero-cta">
+        <a href="#budget" class="btn btn-ochre">Bereken je reisbudget</a>
+        <a href="#bestemmingen" class="btn btn-ghost" style="color:#fff;border-color:#fff">Bekijk bestemmingen</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="n">€35</div><div class="l">gemiddeld p.p. per dag</div></div>
+        <div><div class="n">476 km</div><div class="l">grotendeels lege kustlijn</div></div>
+        <div><div class="n">mei–okt</div><div class="l">beste reisperiode</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="mosaic-bar"></div>
+</section>
+
+<!-- ===== LEADERBOARD 728×90 (boven de fold, na hero) ===== -->
+<div class="wrap" style="padding-top:26px;padding-bottom:8px;">
+  <div class="ad ad-leaderboard">
+    <b>Advertentie</b><span>Leaderboard · 728 × 90</span>
+  </div>
+</div>
+
+<!-- ===== USP BLOKKEN ===== -->
+<section class="section tight">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Waarom Albanië</span>
+      <h2>Drie redenen om nú te gaan</h2>
+    </div>
+    <div class="grid usp-grid">
+      <div class="usp">
+        <div class="ic"><span>€</span></div>
+        <h3>Goedkoop</h3>
+        <p>Een vers gevangen vis aan zee voor €8, een dubbele espresso voor 80 cent, guesthouses vanaf €20. Albanië is met afstand het voordeligste kustland van Europa.</p>
+      </div>
+      <div class="usp">
+        <div class="ic"><span>◆</span></div>
+        <h3>Authentiek</h3>
+        <p>Geen all-inclusive bunkers maar familiepensions, byrek uit de oven en het traditionele <em>besa</em>-gastvrijheidsgevoel. Cultuur die nog niet is gladgestreken voor toeristen.</p>
+      </div>
+      <div class="usp">
+        <div class="ic"><span>↗</span></div>
+        <h3>Onontdekt</h3>
+        <p>Verlaten baaien zoals Gjipe, bergdorpen in de Albanese Alpen en UNESCO-stadjes zonder rijen. Wees er bij vóór de menigte Saranda vindt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SIGNATURE: REISBUDGET-CALCULATOR ===== -->
+<section class="section cream2" id="budget">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow" style="justify-content:center">Signature-tool · alleen bij Bukura</span>
+      <h2>Wat kost jouw Albanië-reis?</h2>
+      <p class="lead">Schuif, kies je stijl en zie direct een realistische dagbegroting in euro's — gebaseerd op onze eigen uitgaven ter plekke.</p>
+    </div>
+    <div class="calc" id="calc">
+      <div class="calc__controls">
+        <h2 style="font-size:1.5rem;margin-bottom:4px;">Stel je reis samen</h2>
+
+        <label>Aantal dagen — <span class="days-val" id="daysVal">10 dagen</span></label>
+        <input type="range" id="days" min="3" max="30" value="10" step="1">
+
+        <label>Reisstijl</label>
+        <div class="seg" id="style">
+          <button data-v="budget" class="active">Backpacker</button>
+          <button data-v="comfort">Comfort</button>
+          <button data-v="luxe">Luxe</button>
+        </div>
+
+        <label>Reisgezelschap</label>
+        <div class="seg" id="people">
+          <button data-v="1" class="active">Solo</button>
+          <button data-v="2">Samen (2)</button>
+          <button data-v="4">Gezin (4)</button>
+        </div>
+
+        <label>Huurauto meenemen?</label>
+        <div class="seg" id="car">
+          <button data-v="yes" class="active">Ja, huurauto</button>
+          <button data-v="no">Nee, bus &amp; furgon</button>
+        </div>
+      </div>
+      <div class="calc__result">
+        <span class="eyebrow">Geschat totaalbudget</span>
+        <div class="total">€<span id="total">1.040</span> <small>voor de hele groep</small></div>
+        <div class="perday" id="perday">≈ €35 per persoon per dag · 10 dagen · 1 reiziger</div>
+        <div class="breakdown" id="breakdown"><!-- JS --></div>
+        <a href="Blogpost.html" class="btn btn-ochre btn-block" style="margin-top:18px;">Bekijk hoe je hierop bespaart →</a>
+        <p class="small" style="color:#bfe0dc;margin:14px 0 0;">Indicatie excl. vluchten. Gebaseerd op gemiddelde prijzen 2025–2026.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== UITGELICHTE CATEGORIEËN ===== -->
+<section class="section" id="bestemmingen">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Begin hier</span>
+      <h2>Uitgelichte categorieën</h2>
+    </div>
+    <div class="grid cat-grid">
+      <a class="cat-card" href="#">
+        <div class="ph sea"></div>
+        <div class="cc"><span class="k">Bestemmingen</span><h3>Albanese Riviera</h3></div>
+      </a>
+      <a class="cat-card" href="#">
+        <div class="ph mtn"></div>
+        <div class="cc"><span class="k">Avontuur</span><h3>Bergen &amp; wandelen</h3></div>
+      </a>
+      <a class="cat-card" href="Blogpost.html">
+        <div class="ph stone"></div>
+        <div class="cc"><span class="k">Praktisch</span><h3>Budget &amp; geld</h3></div>
+      </a>
+      <a class="cat-card" href="Blogpost.html">
+        <div class="ph red"></div>
+        <div class="cc"><span class="k">Vervoer</span><h3>Auto huren</h3></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LAATSTE ARTIKELEN + SIDEBAR (met 300×250) ===== -->
+<section class="section cream2">
+  <div class="wrap">
+    <div class="main-cols">
+      <div>
+        <div class="section-head" style="margin-bottom:28px">
+          <span class="eyebrow">Van het blog</span>
+          <h2>Nieuwste reistips</h2>
+        </div>
+        <div class="grid" style="grid-template-columns:1fr 1fr;">
+
+          <article class="card">
+            <div class="ph stone"><span class="ph__tag">FOTO — Strand Ksamil</span></div>
+            <div class="card-body">
+              <span class="cat-tag">Accommodatie</span>
+              <h3><a href="Blogpost.html">Beste hotels aan de Albanese kust voor elk budget</a></h3>
+              <p class="muted small">Van een €25-kamer in Himarë tot boetiekhotels in Dhërmi — onze geteste favorieten per dorp.</p>
+              <div class="meta"><span>12 min lezen</span><span>Mei 2026</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="ph red"><span class="ph__tag">FOTO — Huurauto bergpas SH75</span></div>
+            <div class="card-body">
+              <span class="cat-tag">Vervoer</span>
+              <h3><a href="Blogpost.html">Auto huren in Albanië: 9 tips die je geld besparen</a></h3>
+              <p class="muted small">Verzekering, tol, parkeren in Tirana en de beruchte wegen naar Theth — alles wat je vooraf moet weten.</p>
+              <div class="meta"><span>14 min lezen</span><span>Apr 2026</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="ph mtn"><span class="ph__tag">FOTO — Theth, Albanese Alpen</span></div>
+            <div class="card-body">
+              <span class="cat-tag">Bestemmingen</span>
+              <h3><a href="Blogpost.html">Wandelen van Theth naar Valbona in 1 dag</a></h3>
+              <p class="muted small">De mooiste dagtocht van de Balkan: route, hoogtemeters, gidsen en waar je blijft slapen.</p>
+              <div class="meta"><span>9 min lezen</span><span>Apr 2026</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="ph ink"><span class="ph__tag">FOTO — Berat, stad van 1000 ramen</span></div>
+            <div class="card-body">
+              <span class="cat-tag">Praktisch</span>
+              <h3><a href="Blogpost.html">Albanië reisbudget: wat kost een week écht?</a></h3>
+              <p class="muted small">Een gedetailleerde uitsplitsing van twee weken reizen — inclusief bonnetjes en bespaartips.</p>
+              <div class="meta"><span>11 min lezen</span><span>Mrt 2026</span></div>
+            </div>
+          </article>
+
+        </div>
+        <div style="margin-top:34px;">
+          <a href="Blogpost.html" class="btn btn-ghost">Alle artikelen →</a>
+        </div>
+      </div>
+
+      <!-- SIDEBAR met 300×250 rectangle -->
+      <aside class="sidebar">
+        <div class="ad ad-rect">
+          <b>Advertentie</b><span>Rectangle · 300 × 250</span>
+        </div>
+        <div class="side-box">
+          <h4>Meest gelezen</h4>
+          <div class="side-list">
+            <a href="Blogpost.html"><span class="n">01</span><span class="t">Visum &amp; inreizen: heb je een visum nodig voor Albanië?</span></a>
+            <a href="Blogpost.html"><span class="n">02</span><span class="t">Pinnen &amp; geld: Lek, euro en tikkende kosten</span></a>
+            <a href="Blogpost.html"><span class="n">03</span><span class="t">Is Albanië veilig? Eerlijk antwoord voor reizigers</span></a>
+            <a href="Blogpost.html"><span class="n">04</span><span class="t">Ksamil vs. Saranda: waar kun je beter verblijven?</span></a>
+          </div>
+        </div>
+        <div class="side-box" style="background:var(--oxblood);color:#fff;border-color:var(--oxblood)">
+          <h4 style="color:var(--ochre)">Reisverzekering</h4>
+          <p class="small" style="color:#f3d9c9;margin:0 0 16px">Bergwandelen, huurauto en afgelegen dorpen — regel goede dekking vóór je vertrekt.</p>
+          <a href="#" class="btn btn-ochre btn-block">Vergelijk verzekeringen</a>
+          <p class="small" style="color:#e7b9a6;margin:10px 0 0;font-family:var(--mono)">* affiliate-link</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===== UITGELICHTE BESTEMMING (full row) ===== -->
+<section class="section">
+  <div class="wrap">
+    <div class="feat-row">
+      <div class="ph sea"><span class="ph__tag">FOTO — Gjipe Beach, verborgen baai (liggend)</span></div>
+      <div class="fr-body">
+        <span class="eyebrow">Bestemming in de kijker</span>
+        <h2 style="font-size:2rem">Gjipe: de baai waar geen weg heen gaat</h2>
+        <p class="muted">Tussen Dhërmi en Himarë ligt een kiezelstrand dat je alleen te voet of per boot bereikt — 25 minuten dalen door een kloof. Geen hotels, wél een strandbar, een camping en water dat bijna pijnlijk helder is. Ga vroeg, neem water en schoenen mee.</p>
+        <div style="display:flex;gap:24px;margin:22px 0 26px;flex-wrap:wrap">
+          <div><div style="font-family:var(--display);font-weight:800;color:var(--oxblood);font-size:1.3rem">Gratis</div><div class="small muted">toegang &amp; camping</div></div>
+          <div><div style="font-family:var(--display);font-weight:800;color:var(--oxblood);font-size:1.3rem">25 min</div><div class="small muted">wandeling vanaf parkeerplek</div></div>
+          <div><div style="font-family:var(--display);font-weight:800;color:var(--oxblood);font-size:1.3rem">jun–sep</div><div class="small muted">beste maanden</div></div>
+        </div>
+        <a href="Blogpost.html" class="btn btn-primary">Lees de complete gids</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NIEUWSBRIEF CTA ===== -->
+<section class="section" id="nieuwsbrief" style="padding-top:0">
+  <div class="wrap">
+    <div class="newsletter">
+      <div style="max-width:560px;position:relative;z-index:2">
+        <span class="eyebrow" style="color:var(--ochre)">Gratis · 1× per maand</span>
+        <h2>Onze Albanië-routes &amp; deals in je inbox</h2>
+        <p style="color:#d6ebe9;font-size:1.1rem">Elke maand één e-mail: een nieuwe route, de beste hoteldeals en eerlijke tips. Geen spam, uitschrijven met één klik.</p>
+        <form class="form" onsubmit="this.querySelector('input').value='';alert('Bedankt! Check je inbox om je aanmelding te bevestigen.');return false;">
+          <input type="email" placeholder="jouw@email.nl" required aria-label="E-mailadres">
+          <button class="btn btn-ochre" type="submit">Aanmelden</button>
+        </form>
+      </div>
+      <div class="mosaic" style="position:absolute;right:40px;top:40px;opacity:.6"><span></span><span></span><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="Homepage.html" style="margin-bottom:16px">
+          <span class="mark"></span>
+          <span class="name" style="color:#fff">BUKURA<small>ALBANIË REISGIDS</small></span>
+        </a>
+        <p>Onafhankelijke Nederlandstalige reisgids over Albanië. Geschreven door reizigers die het land écht kennen — niet door een algoritme.</p>
+        <div class="mosaic" style="margin-top:20px"><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+      <div>
+        <h4>Bestemmingen</h4>
+        <a href="#">Albanese Riviera</a>
+        <a href="#">Ksamil &amp; Saranda</a>
+        <a href="#">Theth &amp; Valbona</a>
+        <a href="#">Berat &amp; Gjirokastër</a>
+        <a href="#">Tirana</a>
+      </div>
+      <div>
+        <h4>Praktisch</h4>
+        <a href="#">Visum &amp; inreizen</a>
+        <a href="#">Reisbudget</a>
+        <a href="#">Veiligheid</a>
+        <a href="#">Beste reistijd</a>
+        <a href="#">Auto huren</a>
+      </div>
+      <div>
+        <h4>Bukura</h4>
+        <a href="#">Over ons</a>
+        <a href="#">Nieuwsbrief</a>
+        <a href="#">Contact</a>
+        <a href="#">Affiliate-disclosure</a>
+        <a href="#">Privacy &amp; cookies</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Bukura Reisgids · Een onafhankelijk reisproject</span>
+      <span>Sommige links zijn affiliate-links. Jij betaalt niets extra; wij verdienen een kleine commissie.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ===== Reisbudget-calculator ===== */
+(function(){
+  // dagprijzen per persoon per dag (EUR), per stijl
+  const RATES = {
+    budget:  { accommodatie:14, eten:12, activiteiten:5,  label:'Backpacker' },
+    comfort: { accommodatie:38, eten:25, activiteiten:12, label:'Comfort' },
+    luxe:    { accommodatie:85, eten:55, activiteiten:30, label:'Luxe' },
+  };
+  // vervoer per dag voor de hele groep
+  const CAR = { yes:34, no:7 }; // huurauto+brandstof vs bus/furgon p.p. benadering
+  const state = { days:10, style:'budget', people:1, car:'yes' };
+
+  const fmt = n => n.toLocaleString('nl-NL');
+  const el = id => document.getElementById(id);
+
+  function compute(){
+    const r = RATES[state.style];
+    const ppd = r.accommodatie + r.eten + r.activiteiten;        // per persoon/dag (excl vervoer)
+    // accommodatie deelt deels bij 2/4 pers -> lichte korting
+    const groupShare = state.people>1 ? 0.82 : 1;
+    const acc  = Math.round(r.accommodatie * groupShare * state.people * state.days);
+    const food = Math.round(r.eten * state.people * state.days);
+    const act  = Math.round(r.activiteiten * state.people * state.days);
+    const transport = state.car==='yes'
+        ? CAR.yes * state.days
+        : Math.round(CAR.no * state.people * state.days);
+    const total = acc + food + act + transport;
+    return { acc, food, act, transport, total, ppd:Math.round(total/state.people/state.days) };
+  }
+
+  function render(){
+    const c = compute();
+    el('total').textContent = fmt(c.total);
+    el('daysVal').textContent = state.days + (state.days===1?' dag':' dagen');
+    const grp = state.people===1?'1 reiziger':state.people+' reizigers';
+    el('perday').textContent = `≈ €${c.ppd} per persoon per dag · ${state.days} dagen · ${grp}`;
+    el('breakdown').innerHTML = `
+      <div class="row"><span><span class="dot" style="background:#C0892F"></span>Accommodatie</span><b>€${fmt(c.acc)}</b></div>
+      <div class="row"><span><span class="dot" style="background:#9A2A2B"></span>Eten &amp; drinken</span><b>€${fmt(c.food)}</b></div>
+      <div class="row"><span><span class="dot" style="background:#bfe0dc"></span>Vervoer ${state.car==='yes'?'(huurauto)':'(bus &amp; furgon)'}</span><b>€${fmt(c.transport)}</b></div>
+      <div class="row"><span><span class="dot" style="background:#7da89f"></span>Activiteiten &amp; entree</span><b>€${fmt(c.act)}</b></div>`;
+  }
+
+  el('days').addEventListener('input', e=>{ state.days=+e.target.value; render(); });
+  function bindSeg(groupId, key){
+    el(groupId).addEventListener('click', e=>{
+      const b = e.target.closest('button'); if(!b) return;
+      [...e.currentTarget.children].forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      state[key] = isNaN(+b.dataset.v) ? b.dataset.v : +b.dataset.v;
+      render();
+    });
+  }
+  bindSeg('style','style'); bindSeg('people','people'); bindSeg('car','car');
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+---
+description: Sanity CMS conventions and the multi-market `market` field
+globs: packages/cms/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Sanity CMS
+
+One shared Sanity project/dataset powers all apps. Content is separated per country via a
+`market` field — this is the backbone of the multi-market architecture.
+
+## Rules
+
+- **Every market-scoped document type MUST include the `market` field** — spread in
+  `marketField` from `@odyssey/cms` (`src/schema/market-field.ts`). Add new markets to
+  `MARKETS` in `src/types.ts`.
+- **Every content query MUST filter on `market`.** Use `fetchByMarket(type, market, ...)` or
+  include `market == $market` in GROQ. Never return cross-market content to an app.
+- Register new schemas in `src/schema/index.ts`.
+- Keep the read client (`sanityClient`) and schema definitions separate: apps import from
+  `@odyssey/cms`; the studio imports `@odyssey/cms/schema`.
+- Type all query results; don't return `any` from GROQ fetches.
+- Config comes from env (`NEXT_PUBLIC_SANITY_*`); never hard-code project id/dataset.

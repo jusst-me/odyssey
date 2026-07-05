@@ -1,0 +1,25 @@
+---
+description: TradeTracker feed handling and affiliate-link conventions
+globs: packages/tradetracker/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# TradeTracker & Affiliate Links
+
+Affiliate offers come from TradeTracker XML product feeds.
+
+## Data strategy
+
+- **Phase A (current):** fetch + parse feeds server-side with Next.js `fetch` caching / ISR
+  (`revalidate`). **No database.** Keep fetching in server components / server code only.
+- **Phase B (future, tracked in Linear):** scheduled sync into a database (Prisma/Postgres)
+  for richer search/filtering. Don't build this until that ticket is picked up.
+- Always normalize raw feed shapes into the internal `TravelOffer` model before it reaches
+  the UI. Per-advertiser mapping lives in `mapToOffers`.
+
+## Affiliate integrity
+
+- Outbound affiliate links use `rel="sponsored nofollow"` and open per UX spec.
+- Every page/section with affiliate links MUST show a clear affiliate disclosure (legal
+  requirement). Never hide the commercial relationship.
+- Feed URLs/credentials come from env (`TRADETRACKER_FEED_URLS`); never commit them.

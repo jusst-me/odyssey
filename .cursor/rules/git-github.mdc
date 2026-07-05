@@ -1,0 +1,26 @@
+---
+description: Git, GitHub, branching and commit conventions
+alwaysApply: true
+---
+
+# Git & GitHub
+
+Version control is GitHub. Keep history clean and reviewable.
+
+## Branches
+
+- `main` is always deployable. Never commit directly to `main` for feature work.
+- Branch names: `<type>/<short-desc>` — e.g. `feat/homepage-hero`, `fix/feed-parsing`,
+  `chore/ci`.
+
+## Commits
+
+- Use Conventional Commits: `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `test:`, `ci:`.
+- Small, focused commits with a message explaining the **why**.
+- Only commit when explicitly asked. Never commit secrets or `.env*` files.
+
+## Pull requests
+
+- Open PRs into `main`; keep them scoped and small where possible.
+- Reference the related Linear ticket in the PR description.
+- CI (lint + type-check + build) must pass before merge.

@@ -1,0 +1,32 @@
+---
+description: Core Odyssey project context, vision and quality bar
+alwaysApply: true
+---
+
+# Odyssey — Project Context
+
+Odyssey is a monorepo for **affiliate-marketing / lead-generating travel platforms**. Revenue
+comes from **TradeTracker** affiliate links plus display ads. The first app (`albanie`) is a
+Dutch-language travel guide for Albania, backed by the `@albanie_reizen` Instagram audience.
+The platform is **multi-market by design** — successful patterns are reused for more countries.
+
+Read `AGENTS.md` and `docs/` for full context. When in doubt, those + these rules are
+authoritative.
+
+## Quality bar (non-negotiable)
+
+- **Reusability first**: shared behaviour goes in `packages/*`, never copy-pasted into apps.
+- **Strict TypeScript**: no `any`, no unchecked casts; model data with real types.
+- **Accessible, performant UI**: RSC by default, caching/ISR, semantic HTML, focus states.
+- **This is a real business**, not a prototype — hold code to production standards.
+
+## Design source of truth
+
+- `docs/design-reference/` is an OLD WordPress/HTML prototype = **loose inspiration only, NOT
+  authoritative**. Never copy its tokens, markup or structure.
+- The real design system is `docs/design-system.md` + `packages/ui`.
+
+## Definition of Done
+
+`pnpm type-check` and `pnpm lint` pass · no hard-coded colours/spacing · env vars documented
+in `.env.example` · shared logic placed in the correct package · Linear ticket updated.

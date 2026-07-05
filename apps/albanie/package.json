@@ -1,0 +1,33 @@
+{
+  "name": "@odyssey/albanie",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@odyssey/cms": "workspace:*",
+    "@odyssey/tradetracker": "workspace:*",
+    "@odyssey/ui": "workspace:*",
+    "@odyssey/utils": "workspace:*",
+    "next": "^16.2.10",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^16.2.10",
+    "@odyssey/config": "workspace:*",
+    "@tailwindcss/postcss": "^4.3.2",
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.18.0",
+    "tailwindcss": "^4.3.2",
+    "typescript": "^5.7.3"
+  }
+}

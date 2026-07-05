@@ -1,0 +1,223 @@
+/* ============================================================
+   Odyssey Design System — Tailwind v4 theme
+   See docs/design-system.md for rationale. Two token layers:
+   1. Primitive scales (:root)          -> stable raw colours
+   2. Semantic roles (:root / .dark)    -> what components use
+   ============================================================ */
+
+@import 'tailwindcss';
+
+/* Enable class-based dark mode (`<html class="dark">`). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------- Primitive tokens ---------- */
+:root {
+  /* Brand — "Adria" sea teal */
+  --brand-50: #eff9fb;
+  --brand-100: #d7f0f4;
+  --brand-200: #b3e2ea;
+  --brand-300: #7fccd9;
+  --brand-400: #45aec1;
+  --brand-500: #2892a7;
+  --brand-600: #22758c;
+  --brand-700: #215e72;
+  --brand-800: #234e5e;
+  --brand-900: #214250;
+  --brand-950: #102b36;
+
+  /* Accent — "Sun" warm amber/terracotta */
+  --accent-50: #fef6ee;
+  --accent-100: #fce9d5;
+  --accent-200: #f8cfa8;
+  --accent-300: #f3ae70;
+  --accent-400: #ee8a45;
+  --accent-500: #e86f2a;
+  --accent-600: #d5551f;
+  --accent-700: #b13f1c;
+  --accent-800: #8d331e;
+  --accent-900: #722c1c;
+  --accent-950: #3d140c;
+
+  /* Neutral — "Stone" warm grey */
+  --neutral-50: #f8f7f5;
+  --neutral-100: #edeae6;
+  --neutral-200: #dbd6cf;
+  --neutral-300: #c2bbb0;
+  --neutral-400: #a49b8c;
+  --neutral-500: #857c6e;
+  --neutral-600: #6b6357;
+  --neutral-700: #565046;
+  --neutral-800: #3b372f;
+  --neutral-900: #262320;
+  --neutral-950: #171512;
+
+  /* Status */
+  --success: #2f9e63;
+  --warning: #e0a52b;
+  --error: #d23f3f;
+  --info: #2f74d0;
+
+  /* Radius */
+  --radius: 0.5rem;
+
+  /* ---------- Semantic roles (light) ---------- */
+  --background: var(--neutral-50);
+  --foreground: var(--neutral-900);
+  --card: #ffffff;
+  --card-foreground: var(--neutral-900);
+  --popover: #ffffff;
+  --popover-foreground: var(--neutral-900);
+  --primary: var(--brand-600);
+  --primary-foreground: var(--neutral-50);
+  --secondary: var(--neutral-100);
+  --secondary-foreground: var(--neutral-900);
+  --muted: var(--neutral-100);
+  --muted-foreground: var(--neutral-600);
+  --accent-role: var(--accent-500);
+  --accent-role-foreground: var(--neutral-950);
+  --destructive: var(--error);
+  --destructive-foreground: var(--neutral-50);
+  --border: var(--neutral-200);
+  --input: var(--neutral-200);
+  --ring: var(--brand-500);
+}
+
+/* ---------- Semantic roles (dark) ---------- */
+.dark {
+  --background: var(--neutral-950);
+  --foreground: var(--neutral-50);
+  --card: var(--neutral-900);
+  --card-foreground: var(--neutral-50);
+  --popover: var(--neutral-900);
+  --popover-foreground: var(--neutral-50);
+  --primary: var(--brand-400);
+  --primary-foreground: var(--neutral-950);
+  --secondary: var(--neutral-800);
+  --secondary-foreground: var(--neutral-50);
+  --muted: var(--neutral-800);
+  --muted-foreground: var(--neutral-400);
+  --accent-role: var(--accent-400);
+  --accent-role-foreground: var(--neutral-950);
+  --destructive: var(--error);
+  --destructive-foreground: var(--neutral-50);
+  --border: var(--neutral-800);
+  --input: var(--neutral-800);
+  --ring: var(--brand-400);
+}
+
+/* ---------- Map tokens to Tailwind theme ----------
+   `@theme inline` exposes utilities like bg-background, text-primary,
+   bg-brand-500, font-display, rounded-lg, etc. */
+@theme inline {
+  /* Semantic colours */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent-role);
+  --color-accent-foreground: var(--accent-role-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-info: var(--info);
+
+  /* Primitive brand scale */
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+  --color-brand-900: var(--brand-900);
+  --color-brand-950: var(--brand-950);
+
+  /* Primitive accent scale */
+  --color-sun-50: var(--accent-50);
+  --color-sun-100: var(--accent-100);
+  --color-sun-200: var(--accent-200);
+  --color-sun-300: var(--accent-300);
+  --color-sun-400: var(--accent-400);
+  --color-sun-500: var(--accent-500);
+  --color-sun-600: var(--accent-600);
+  --color-sun-700: var(--accent-700);
+  --color-sun-800: var(--accent-800);
+  --color-sun-900: var(--accent-900);
+  --color-sun-950: var(--accent-950);
+
+  /* Primitive neutral scale */
+  --color-neutral-50: var(--neutral-50);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-400: var(--neutral-400);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-600: var(--neutral-600);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-800: var(--neutral-800);
+  --color-neutral-900: var(--neutral-900);
+  --color-neutral-950: var(--neutral-950);
+
+  /* Typography — provided by next/font as CSS variables */
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* Type scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: clamp(2rem, 3vw, 2.5rem);
+  --text-4xl: clamp(2.5rem, 5vw, 3.75rem);
+
+  /* Radius */
+  --radius-sm: calc(var(--radius) - 0.25rem);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 0.25rem);
+  --radius-xl: calc(var(--radius) + 0.5rem);
+
+  /* Elevation */
+  --shadow-sm: 0 1px 2px rgba(23, 21, 18, 0.06), 0 2px 8px rgba(23, 21, 18, 0.05);
+  --shadow-md: 0 6px 24px rgba(23, 21, 18, 0.1);
+  --shadow-lg: 0 12px 40px rgba(23, 21, 18, 0.14);
+}
+
+/* ---------- Base layer ---------- */
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+}

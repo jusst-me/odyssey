@@ -1,0 +1,107 @@
+<!-- ============================================================
+     BUKURA · REISBUDGET-CALCULATOR — zelfstandig blok
+     Plak dit volledig in één Custom HTML-blok. Werkt los van
+     de rest: kleuren, opmaak én script zitten hierin.
+     ============================================================ -->
+<div class="bukura-calc-wrap">
+<style>
+.bukura-calc-wrap{
+  --ink:#221C16; --ochre:#C0892F; --adriatic-d:#0F4549;
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  font-family:var(--display); max-width:1000px; margin:0 auto;
+}
+.bukura-calc-wrap *{ box-sizing:border-box; }
+.bukura-calc{ background:var(--ink); color:#f4ecdd; border-radius:14px; overflow:hidden; display:grid; grid-template-columns:1fr 1fr; box-shadow:0 6px 24px rgba(34,28,22,.18); }
+.bukura-calc__c{ padding:46px; }
+.bukura-calc__r{ background:var(--adriatic-d); padding:46px; position:relative; }
+.bukura-calc h2{ color:#fff; font-size:1.5rem; margin:0 0 4px; line-height:1.1; }
+.bukura-calc label{ font-weight:600; font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ochre); display:block; margin:22px 0 12px; }
+.bukura-calc label:first-of-type{ margin-top:14px; }
+.bukura-seg{ display:flex; gap:8px; flex-wrap:wrap; }
+.bukura-seg button{ font-family:var(--display); font-weight:600; font-size:.92rem; cursor:pointer; background:transparent; color:#e8dec9; border:1.5px solid #4a5f5a; border-radius:4px; padding:.6em 1em; transition:.15s ease; }
+.bukura-seg button.active{ background:var(--ochre); color:var(--ink); border-color:var(--ochre); }
+.bukura-seg button:hover:not(.active){ border-color:var(--ochre); }
+.bukura-calc input[type=range]{ width:100%; accent-color:var(--ochre); }
+.bukura-calc .days-val{ font-weight:800; color:#fff; font-size:1.1rem; }
+.bukura-calc .kicker{ font-weight:600; font-size:.78rem; letter-spacing:.22em; text-transform:uppercase; color:var(--ochre); display:flex; align-items:center; gap:.6em; }
+.bukura-calc .kicker::before{ content:""; width:26px; height:2px; background:var(--ochre); }
+.bukura-calc .total{ font-weight:800; font-size:3.4rem; color:#fff; line-height:1; margin:10px 0 4px; }
+.bukura-calc .total small{ font-size:1rem; font-weight:600; color:#bfe0dc; }
+.bukura-calc .perday{ font-size:.9rem; color:#bfe0dc; }
+.bukura-calc .breakdown{ margin:24px 0 8px; border-top:1px solid rgba(255,255,255,.16); }
+.bukura-calc .breakdown .row{ display:flex; justify-content:space-between; align-items:center; padding:11px 0; border-bottom:1px solid rgba(255,255,255,.12); font-size:.95rem; }
+.bukura-calc .breakdown .row b{ color:#fff; font-weight:700; }
+.bukura-calc .dot{ width:9px; height:9px; border-radius:2px; display:inline-block; margin-right:9px; transform:rotate(45deg); }
+.bukura-calc .cta{ display:flex; width:100%; justify-content:center; align-items:center; font-family:var(--display); font-weight:600; padding:.8em 1.4em; border-radius:4px; background:var(--ochre); color:var(--ink); text-decoration:none; margin-top:18px; transition:.15s ease; }
+.bukura-calc .cta:hover{ background:#9E6E1F; color:#fff; }
+.bukura-calc .fine{ font-size:.8rem; color:#bfe0dc; margin:14px 0 0; }
+@media (max-width:760px){ .bukura-calc{ grid-template-columns:1fr; } .bukura-calc__c,.bukura-calc__r{ padding:30px 24px; } }
+</style>
+
+<div class="bukura-calc" id="bukuraCalc">
+  <div class="bukura-calc__c">
+    <h2>Stel je reis samen</h2>
+    <label>Aantal dagen — <span class="days-val" id="bkDaysVal">10 dagen</span></label>
+    <input type="range" id="bkDays" min="3" max="30" value="10" step="1">
+    <label>Reisstijl</label>
+    <div class="bukura-seg" id="bkStyle">
+      <button data-v="budget" class="active">Backpacker</button>
+      <button data-v="comfort">Comfort</button>
+      <button data-v="luxe">Luxe</button>
+    </div>
+    <label>Reisgezelschap</label>
+    <div class="bukura-seg" id="bkPeople">
+      <button data-v="1" class="active">Solo</button>
+      <button data-v="2">Samen (2)</button>
+      <button data-v="4">Gezin (4)</button>
+    </div>
+    <label>Huurauto meenemen?</label>
+    <div class="bukura-seg" id="bkCar">
+      <button data-v="yes" class="active">Ja, huurauto</button>
+      <button data-v="no">Nee, bus &amp; furgon</button>
+    </div>
+  </div>
+  <div class="bukura-calc__r">
+    <span class="kicker">Geschat totaalbudget</span>
+    <div class="total">€<span id="bkTotal">1.040</span> <small>voor de hele groep</small></div>
+    <div class="perday" id="bkPerday">≈ €35 per persoon per dag · 10 dagen · 1 reiziger</div>
+    <div class="breakdown" id="bkBreakdown"></div>
+    <a href="#" class="cta">Bekijk hoe je hierop bespaart →</a>
+    <p class="fine">Indicatie excl. vluchten. Gebaseerd op gemiddelde prijzen 2025–2026.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var RATES={budget:{a:14,e:12,k:5},comfort:{a:38,e:25,k:12},luxe:{a:85,e:55,k:30}};
+  var CAR={yes:34,no:7}, S={days:10,style:'budget',people:1,car:'yes'};
+  var fmt=function(n){return n.toLocaleString('nl-NL');}, el=function(i){return document.getElementById(i);};
+  function calc(){
+    var r=RATES[S.style], gs=S.people>1?0.82:1;
+    var acc=Math.round(r.a*gs*S.people*S.days), food=Math.round(r.e*S.people*S.days), act=Math.round(r.k*S.people*S.days);
+    var tr=S.car==='yes'?CAR.yes*S.days:Math.round(CAR.no*S.people*S.days);
+    var total=acc+food+act+tr;
+    return {acc:acc,food:food,act:act,tr:tr,total:total,ppd:Math.round(total/S.people/S.days)};
+  }
+  function render(){
+    var c=calc();
+    el('bkTotal').textContent=fmt(c.total);
+    el('bkDaysVal').textContent=S.days+(S.days===1?' dag':' dagen');
+    var grp=S.people===1?'1 reiziger':S.people+' reizigers';
+    el('bkPerday').textContent='≈ €'+c.ppd+' per persoon per dag · '+S.days+' dagen · '+grp;
+    el('bkBreakdown').innerHTML=
+      '<div class="row"><span><span class="dot" style="background:#C0892F"></span>Accommodatie</span><b>€'+fmt(c.acc)+'</b></div>'+
+      '<div class="row"><span><span class="dot" style="background:#9A2A2B"></span>Eten &amp; drinken</span><b>€'+fmt(c.food)+'</b></div>'+
+      '<div class="row"><span><span class="dot" style="background:#bfe0dc"></span>Vervoer '+(S.car==='yes'?'(huurauto)':'(bus &amp; furgon)')+'</span><b>€'+fmt(c.tr)+'</b></div>'+
+      '<div class="row"><span><span class="dot" style="background:#7da89f"></span>Activiteiten &amp; entree</span><b>€'+fmt(c.act)+'</b></div>';
+  }
+  el('bkDays').addEventListener('input',function(e){S.days=+e.target.value;render();});
+  function seg(id,key){ el(id).addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b)return;
+    [].forEach.call(e.currentTarget.children,function(x){x.classList.remove('active');});
+    b.classList.add('active'); S[key]=isNaN(+b.dataset.v)?b.dataset.v:+b.dataset.v; render();
+  });}
+  seg('bkStyle','style'); seg('bkPeople','people'); seg('bkCar','car'); render();
+})();
+</script>
+</div>

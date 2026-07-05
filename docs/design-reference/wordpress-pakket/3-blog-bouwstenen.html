@@ -1,0 +1,78 @@
+<!-- ============================================================
+     BUKURA · BLOG-BOUWSTENEN
+     Herbruikbare blokken voor in je blogposts. Sla ze in WordPress
+     op als "Patroon" (synced/herbruikbaar blok) zodat je ze met
+     één klik in elke post invoegt.
+     Vereist: bukura-styles.css site-breed geladen.
+
+     BELANGRIJK: het tekstgedeelte van je post moet in een element
+     met class="article" staan. In het blog-template (zie INSTALL.md)
+     wikkel je het "Berichtinhoud"-blok in <div class="article">…</div>.
+     Dan krijgen koppen, lijsten en quotes automatisch de juiste opmaak.
+     ============================================================ -->
+
+
+<!-- ====== 1. INHOUDSOPGAVE (bovenaan de post) ====== -->
+<nav class="toc">
+  <h4>In dit artikel</h4>
+  <ol>
+    <li><a href="#t1">Eerste kop</a></li>
+    <li><a href="#t2">Tweede kop</a></li>
+    <li><a href="#t3">Derde kop</a></li>
+  </ol>
+</nav>
+<!-- Tip: RankMath heeft ook een automatische inhoudsopgave-block.
+     Gebruik die als je niet handmatig wilt linken. -->
+
+
+<!-- ====== 2. AFFILIATE-BLOK · BOOKING.COM (hotel) ====== -->
+<div class="aff">
+  <div class="aff-top">
+    <div class="ph mtn"></div><!-- vervang door een <img> van het hotel -->
+    <div class="aff-body">
+      <span class="aff-kicker">◆ Aanrader om te overnachten</span>
+      <h3>Naam van het hotel — plaats</h3>
+      <div class="stars">★★★★☆ <span class="small muted" style="font-family:var(--serif)">8,9 · 412 beoordelingen</span></div>
+      <p class="muted small" style="margin:.4em 0 0">Korte, eerlijke omschrijving waarom dit hotel een aanrader is.</p>
+      <div class="aff-row">
+        <div class="price"><b>vanaf €34</b> <span>/ nacht · incl. ontbijt</span></div>
+        <a href="JOUW-PRETTY-LINK" class="btn btn-dark">Boek dit hotel via Booking.com →</a>
+      </div>
+    </div>
+  </div>
+  <div class="disc">* Affiliate-link via Booking.com — zelfde prijs voor jou, kleine commissie voor ons.</div>
+</div>
+
+
+<!-- ====== 3. AFFILIATE-BLOK · RENTALCARS (autoverhuur) ====== -->
+<div class="aff">
+  <div class="aff-top">
+    <div class="ph red"></div>
+    <div class="aff-body">
+      <span class="aff-kicker">◆ Aanbevolen · Autoverhuur</span>
+      <h3>Vergelijk huurauto's in Albanië</h3>
+      <p class="muted small" style="margin:.3em 0 0">Korte uitleg waarom je hier het beste vergelijkt.</p>
+      <div class="aff-row">
+        <div class="price"><b>vanaf €19</b> <span>/ dag · incl. annulering</span></div>
+        <a href="JOUW-PRETTY-LINK" class="btn btn-primary">Bekijk prijzen via Rentalcars →</a>
+      </div>
+    </div>
+  </div>
+  <div class="disc">* Affiliate-link — jij betaalt niets extra, wij ontvangen een kleine commissie.</div>
+</div>
+
+
+<!-- ====== 4. INSIDERTIP / CALLOUT ====== -->
+<div class="callout">
+  <div class="ct">◆ Insidertip</div>
+  Korte, waardevolle tip die opvalt in de lopende tekst.
+</div>
+
+
+<!-- ====== 5. EIND-CTA (naar de budget-calculator) ====== -->
+<div class="endcta">
+  <span class="mosaic" style="justify-content:center;margin-bottom:16px;display:flex"><span></span><span></span><span></span><span></span><span></span></span>
+  <h3>Klaar om je Albanië-reis te plannen?</h3>
+  <p style="color:#d9cdb5">Bereken eerst je totale reisbudget met onze gratis calculator.</p>
+  <a href="/reisbudget-calculator/" class="btn btn-ochre" style="margin-top:6px">Open de reisbudget-calculator →</a>
+</div>
