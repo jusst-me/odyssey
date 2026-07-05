@@ -119,7 +119,7 @@ Role-based tokens map to the primitives above and are what components should ref
 | `accent-foreground`  | `neutral-950` | `neutral-950` |
 | `ring`               | `brand-500`   | `brand-400`   |
 
-> **`border` vs `input`.** `border` (`neutral-200`/`neutral-800`) is for *decorative*
+> **`border` vs `input`.** `border` (`neutral-200`/`neutral-800`) is for _decorative_
 > dividers and separators, which are exempt from non-text contrast. `input`
 > (`neutral-500`) is for **control outlines** — the border that identifies an interactive
 > element (text fields, selects, checkboxes). It meets WCAG 1.4.11 (>= 3:1) against the
@@ -130,15 +130,15 @@ Role-based tokens map to the primitives above and are what components should ref
 
 Verified against the 4.5:1 (text) and 3:1 (non-text / large text) thresholds in both themes.
 
-| Pairing                              | Light   | Dark    |
-| ------------------------------------ | ------- | ------- |
-| Body text (`foreground`/`bg`)        | 14.6:1  | 17.0:1  |
-| Secondary text (`muted-foreground`)  | 5.5:1   | 6.6:1   |
-| Primary button / link                | 4.9:1   | 7.0:1   |
-| Accent button                        | 5.9:1   | 7.3:1   |
-| Destructive surface + fg             | 5.5:1   | 5.5:1   |
-| Focus ring vs background (>= 3:1)     | 3.4:1   | 7.0:1   |
-| Control outline `input` vs bg (>= 3:1)| 3.8:1   | 4.4:1   |
+| Pairing                                | Light  | Dark   |
+| -------------------------------------- | ------ | ------ |
+| Body text (`foreground`/`bg`)          | 14.6:1 | 17.0:1 |
+| Secondary text (`muted-foreground`)    | 5.5:1  | 6.6:1  |
+| Primary button / link                  | 4.9:1  | 7.0:1  |
+| Accent button                          | 5.9:1  | 7.3:1  |
+| Destructive surface + fg               | 5.5:1  | 5.5:1  |
+| Focus ring vs background (>= 3:1)      | 3.4:1  | 7.0:1  |
+| Control outline `input` vs bg (>= 3:1) | 3.8:1  | 4.4:1  |
 
 Contrast is only one dimension of AA. Keyboard operability, visible focus, semantics and
 motion are validated per component during implementation — see `.cursor/rules/accessibility.mdc`.
