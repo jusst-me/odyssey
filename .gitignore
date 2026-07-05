@@ -10,6 +10,9 @@ build/
 .turbo/
 *.tsbuildinfo
 
+# Next.js generated types
+next-env.d.ts
+
 # Environment
 .env
 .env.local
