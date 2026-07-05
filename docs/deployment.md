@@ -11,7 +11,7 @@ Each app is its own Vercel project pointing at this monorepo. For `apps/albanie`
 | Install Command | `pnpm install` (run at repo root — Vercel handles the workspace) |
 | Build Command | `pnpm turbo run build --filter=@odyssey/albanie` (or leave default; Vercel detects Turborepo) |
 | Output | `.next` (default) |
-| Node.js version | 22.x (matches `.nvmrc`) |
+| Node.js version | 24.x (matches `.nvmrc`) |
 
 Enable **"Include files outside the Root Directory"** so Vercel can access shared
 `packages/*`. Turborepo remote caching can be enabled later for faster builds.

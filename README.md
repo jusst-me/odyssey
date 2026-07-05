@@ -50,4 +50,4 @@ pnpm dev
 
 ## Requirements
 
-Node `>=20.11` (see `.nvmrc`) and pnpm `>=10`.
+Node `>=24` (see `.nvmrc`) and pnpm `>=10`.
