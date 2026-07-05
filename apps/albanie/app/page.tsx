@@ -3,7 +3,7 @@ import { Button } from '@odyssey/ui';
 export default function HomePage() {
   return (
     <main className="mx-auto flex min-h-dvh max-w-3xl flex-col justify-center gap-6 px-6 py-24">
-      <p className="text-accent text-sm font-medium uppercase tracking-widest">Odyssey · Albanië</p>
+      <p className="text-primary text-sm font-medium uppercase tracking-widest">Odyssey · Albanië</p>
       <h1 className="text-foreground text-4xl">Fundament staat</h1>
       <p className="text-muted-foreground text-lg">
         Dit is een tijdelijke placeholder. De volledige homepage en alle features worden gebouwd
