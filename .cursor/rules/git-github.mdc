@@ -49,8 +49,10 @@ Format:
 - Reference the related Linear ticket in the footer where relevant (e.g. `Refs: JUS-42`).
 - Only commit when explicitly asked. Never commit secrets or `.env*` files.
 
-A commit-msg hook (commitlint) that enforces this is tracked in Linear (see the husky ticket);
-until it lands, this is enforced by convention.
+A **commit-msg hook (commitlint)** enforces this format on every commit, and a **pre-commit
+hook** (husky + lint-staged) formats staged files and runs `lint`, `type-check` and `test`
+before a commit is accepted. Hooks install automatically via the `prepare` script on
+`pnpm install`. Never bypass them with `--no-verify`.
 
 ## Pull requests
 
