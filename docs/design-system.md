@@ -87,12 +87,17 @@ Text, borders, surfaces. Slightly warm to complement the palette.
 
 ### Semantic status
 
-| Role    | Hex       |
-| ------- | --------- |
-| success | `#2f9e63` |
-| warning | `#e0a52b` |
-| error   | `#d23f3f` |
-| info    | `#2f74d0` |
+Status tokens are **solid surface colours**. Each has a paired `*-foreground` so text
+placed on the surface meets AA (>= 4.5:1). Never put text on a status surface without its
+paired foreground. Surface/foreground contrast is theme-independent (same pair in light and
+dark).
+
+| Role    | Surface   | Foreground    | Text contrast |
+| ------- | --------- | ------------- | ------------- |
+| success | `#1c7a4a` | `#ffffff`     | 5.34:1        |
+| warning | `#e0a52b` | `neutral-950` | 8.32:1        |
+| error   | `#c1272d` | `#ffffff`     | 5.84:1        |
+| info    | `#235ea8` | `#ffffff`     | 6.49:1        |
 
 ### Semantic roles (light / dark)
 
@@ -107,11 +112,36 @@ Role-based tokens map to the primitives above and are what components should ref
 | `muted`              | `neutral-100` | `neutral-800` |
 | `muted-foreground`   | `neutral-600` | `neutral-400` |
 | `border`             | `neutral-200` | `neutral-800` |
+| `input`              | `neutral-500` | `neutral-500` |
 | `primary`            | `brand-600`   | `brand-400`   |
 | `primary-foreground` | `neutral-50`  | `neutral-950` |
 | `accent`             | `accent-500`  | `accent-400`  |
 | `accent-foreground`  | `neutral-950` | `neutral-950` |
 | `ring`               | `brand-500`   | `brand-400`   |
+
+> **`border` vs `input`.** `border` (`neutral-200`/`neutral-800`) is for *decorative*
+> dividers and separators, which are exempt from non-text contrast. `input`
+> (`neutral-500`) is for **control outlines** — the border that identifies an interactive
+> element (text fields, selects, checkboxes). It meets WCAG 1.4.11 (>= 3:1) against the
+> background in both themes (3.84:1 light, 4.43:1 dark). Use `border-input` on controls, not
+> `border-border`.
+
+### Contrast audit (WCAG 2.2 AA)
+
+Verified against the 4.5:1 (text) and 3:1 (non-text / large text) thresholds in both themes.
+
+| Pairing                              | Light   | Dark    |
+| ------------------------------------ | ------- | ------- |
+| Body text (`foreground`/`bg`)        | 14.6:1  | 17.0:1  |
+| Secondary text (`muted-foreground`)  | 5.5:1   | 6.6:1   |
+| Primary button / link                | 4.9:1   | 7.0:1   |
+| Accent button                        | 5.9:1   | 7.3:1   |
+| Destructive surface + fg             | 5.5:1   | 5.5:1   |
+| Focus ring vs background (>= 3:1)     | 3.4:1   | 7.0:1   |
+| Control outline `input` vs bg (>= 3:1)| 3.8:1   | 4.4:1   |
+
+Contrast is only one dimension of AA. Keyboard operability, visible focus, semantics and
+motion are validated per component during implementation — see `.cursor/rules/accessibility.mdc`.
 
 ## Typography
 

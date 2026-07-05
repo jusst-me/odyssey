@@ -51,11 +51,16 @@
   --neutral-900: #262320;
   --neutral-950: #171512;
 
-  /* Status */
-  --success: #2f9e63;
+  /* Status — solid surface colours; always pair with the matching
+     *-foreground so text on the surface meets WCAG AA (>= 4.5:1). */
+  --success: #1c7a4a;
   --warning: #e0a52b;
-  --error: #d23f3f;
-  --info: #2f74d0;
+  --error: #c1272d;
+  --info: #235ea8;
+  --success-foreground: #ffffff;
+  --warning-foreground: var(--neutral-950);
+  --error-foreground: #ffffff;
+  --info-foreground: #ffffff;
 
   /* Radius */
   --radius: 0.5rem;
@@ -77,8 +82,10 @@
   --accent-role-foreground: var(--neutral-950);
   --destructive: var(--error);
   --destructive-foreground: var(--neutral-50);
+  /* `--border`: decorative dividers/separators (not required to identify
+     a control). `--input`: control outlines — must meet 3:1 (WCAG 1.4.11). */
   --border: var(--neutral-200);
-  --input: var(--neutral-200);
+  --input: var(--neutral-500);
   --ring: var(--brand-500);
 }
 
@@ -101,7 +108,7 @@
   --destructive: var(--error);
   --destructive-foreground: var(--neutral-50);
   --border: var(--neutral-800);
-  --input: var(--neutral-800);
+  --input: var(--neutral-500);
   --ring: var(--brand-400);
 }
 
@@ -130,9 +137,13 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
   --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
   --color-error: var(--error);
+  --color-error-foreground: var(--error-foreground);
   --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
 
   /* Primitive brand scale */
   --color-brand-50: var(--brand-50);
