@@ -56,6 +56,14 @@ before a commit is accepted. Hooks install automatically via the `prepare` scrip
 
 ## Pull requests
 
+**Pull requests are the standard way to land changes on `main`.** Every change follows:
+`branch → open a PR into main → CI green + review → merge`. Do not push feature work directly
+to `main`.
+
 - Open PRs into `main`; keep them scoped and small where possible.
 - Reference the related Linear ticket in the PR description.
-- CI (lint + type-check + build) must pass before merge.
+- CI (GitHub Actions, `.github/workflows/ci.yml`) must pass before merge: format check,
+  lint, type-check, test and build, plus Playwright E2E.
+- `main` is a **protected branch**: merging requires a PR with the CI check passing (no direct
+  pushes). Configure this once in GitHub → Settings → Branches → branch protection for `main`
+  (require a pull request, require the `CI` status check).
