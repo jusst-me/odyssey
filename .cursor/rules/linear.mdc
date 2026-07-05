@@ -12,11 +12,12 @@ so work stays findable across departments.
 ## Mandatory on every ticket
 
 - **Team** — the owning team.
-- **`Type` label** — one of: `Feature`, `Bug`, `Chore`, `Research`, `Content`, `Design`.
-- **`Area/Department` label** — one of: `Development`, `Design`, `Marketing`, `Content`,
-  `Finance`, `Operations`, `Legal`.
+- **`Type` label** (flat labels, describe the nature of the work) — one of: `Feature`, `Bug`,
+  `Improvement`, `Chore`, `Research`.
+- **`Area` label** (label group → department) — one of: `Development`, `Design`, `Marketing`,
+  `Content`, `Finance`, `Operations`, `Legal`.
 - **Project** — link to the relevant project (e.g. "Odyssey") when applicable.
-- Optional **`Platform/App`** label (`Albanie`, `Shared`) for product work.
+- Optional **`Platform`** label (group → `Albanie`, `Shared`) for product/engineering work.
 
 ## Assignment
 
