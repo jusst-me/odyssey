@@ -57,3 +57,5 @@ export {
   AccordionTrigger,
   AccordionContent,
 } from './components/accordion';
+
+export { TopBar, type TopBarLink, type TopBarProps } from './components/top-bar';
