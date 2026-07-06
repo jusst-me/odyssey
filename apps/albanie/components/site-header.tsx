@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Search, Menu } from 'lucide-react';
+import { Search, Menu, X } from 'lucide-react';
 import {
   Button,
   NavigationMenu,
@@ -16,10 +16,11 @@ import type { NavItem } from '../lib/navigation';
 
 interface SiteHeaderProps {
   items: NavItem[];
+  mobileMenuOpen?: boolean;
   onMobileMenuToggle?: () => void;
 }
 
-export function SiteHeader({ items, onMobileMenuToggle }: SiteHeaderProps) {
+export function SiteHeader({ items, mobileMenuOpen, onMobileMenuToggle }: SiteHeaderProps) {
   return (
     <header className="border-border bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 border-b backdrop-blur-sm">
       <div className="mx-auto flex h-[4.625rem] max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
@@ -35,7 +36,7 @@ export function SiteHeader({ items, onMobileMenuToggle }: SiteHeaderProps) {
           </span>
         </Link>
 
-        <NavigationMenu className="hidden lg:flex">
+        <NavigationMenu viewport={false} className="hidden lg:flex">
           <NavigationMenuList>
             {items.map((item) =>
               item.children ? (
@@ -90,10 +91,10 @@ export function SiteHeader({ items, onMobileMenuToggle }: SiteHeaderProps) {
           <button
             type="button"
             className="text-foreground hover:bg-secondary hover:text-primary inline-flex size-9 items-center justify-center rounded-md transition-colors lg:hidden"
-            aria-label="Menu openen"
+            aria-label={mobileMenuOpen ? 'Menu sluiten' : 'Menu openen'}
             onClick={onMobileMenuToggle}
           >
-            <Menu className="size-6" />
+            {mobileMenuOpen ? <X className="size-6" /> : <Menu className="size-6" />}
           </button>
         </div>
       </div>

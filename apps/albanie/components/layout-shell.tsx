@@ -20,7 +20,11 @@ export function LayoutShell({ topBar, navItems, children }: LayoutShellProps) {
   return (
     <>
       <TopBar tagline={topBar.tagline} links={topBar.links} />
-      <SiteHeader items={navItems} onMobileMenuToggle={() => setMobileNavOpen(true)} />
+      <SiteHeader
+        items={navItems}
+        mobileMenuOpen={mobileNavOpen}
+        onMobileMenuToggle={() => setMobileNavOpen((prev) => !prev)}
+      />
       <MobileNav items={navItems} open={mobileNavOpen} onOpenChange={setMobileNavOpen} />
       {children}
     </>
