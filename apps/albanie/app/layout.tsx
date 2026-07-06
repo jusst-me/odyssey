@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import { Fraunces, Inter } from 'next/font/google';
 import './globals.css';
 
-import { TopBar } from '@odyssey/ui';
 import { topBarConfig, mainNavItems } from '../lib/navigation';
-import { SiteHeader } from '../components/site-header';
+import { LayoutShell } from '../components/layout-shell';
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -31,9 +30,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="nl" className={`${fraunces.variable} ${inter.variable}`}>
       <body>
-        <TopBar tagline={topBarConfig.tagline} links={topBarConfig.links} />
-        <SiteHeader items={mainNavItems} />
-        {children}
+        <LayoutShell topBar={topBarConfig} navItems={mainNavItems}>
+          {children}
+        </LayoutShell>
       </body>
     </html>
   );

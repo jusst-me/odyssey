@@ -6,6 +6,7 @@
    ============================================================ */
 
 @import 'tailwindcss';
+@import 'tw-animate-css';
 
 /* Enable class-based dark mode (`<html class="dark">`). */
 @custom-variant dark (&:where(.dark, .dark *));
