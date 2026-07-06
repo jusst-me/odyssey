@@ -45,7 +45,7 @@ function SiteFooter({
               </span>
               <span className="font-display text-card text-lg font-bold leading-tight tracking-tight">
                 {brand.name}
-                <small className="text-primary block text-[0.6rem] font-semibold uppercase tracking-[0.32em]">
+                <small className="text-brand-400 block text-[0.6rem] font-semibold uppercase tracking-[0.32em]">
                   {brand.subtitle}
                 </small>
               </span>
