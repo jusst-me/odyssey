@@ -32,7 +32,7 @@ function SiteFooter({
   return (
     <footer
       data-slot="site-footer"
-      className={cn('bg-foreground text-neutral-400', className)}
+      className={cn('bg-foreground text-neutral-200', className)}
       {...props}
     >
       <div className="mx-auto max-w-7xl px-4 pb-8 pt-16 sm:px-6 lg:px-8">
@@ -50,7 +50,7 @@ function SiteFooter({
                 </small>
               </span>
             </div>
-            <p className="max-w-[34ch] text-sm leading-relaxed text-neutral-500">
+            <p className="max-w-[34ch] text-sm leading-relaxed text-neutral-200">
               {brand.description}
             </p>
             {newsletterSlot && <div className="mt-6">{newsletterSlot}</div>}
@@ -67,7 +67,7 @@ function SiteFooter({
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="font-display hover:text-accent inline-block py-1 text-sm font-medium text-neutral-400 transition-colors"
+                      className="font-display hover:text-accent inline-block py-1 text-sm font-medium text-neutral-200 transition-colors"
                     >
                       {link.label}
                     </a>
@@ -79,7 +79,7 @@ function SiteFooter({
         </div>
 
         {/* Bottom bar */}
-        <div className="font-display mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-neutral-800 pt-6 text-xs text-neutral-500">
+        <div className="font-display mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-neutral-800 pt-6 text-xs text-neutral-200">
           <span>{copyright}</span>
           {affiliateDisclosure && <span className="max-w-prose">{affiliateDisclosure}</span>}
         </div>
