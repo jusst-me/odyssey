@@ -1,0 +1,11 @@
+/* ============================================================
+   Market Theme — Albanië
+   ============================================================
+   The base Odyssey theme (Adriatic teal + Sun amber) was designed
+   WITH Albania as the launch market, so no overrides are needed.
+
+   Future markets copy the template from
+   packages/ui/src/styles/market-theme.template.css and override
+   the semantic tokens that differ (e.g. a Greek market might
+   shift --primary toward a deeper Aegean blue).
+   ============================================================ */
