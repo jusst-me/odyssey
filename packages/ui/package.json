@@ -9,6 +9,7 @@
   "exports": {
     ".": "./src/index.ts",
     "./styles.css": "./src/styles/theme.css",
+    "./styles/market-theme.template.css": "./src/styles/market-theme.template.css",
     "./lib/utils": "./src/lib/utils.ts",
     "./components/*": "./src/components/*.tsx"
   },

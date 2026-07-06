@@ -179,6 +179,34 @@ Loaded via `next/font/google` per app for optimal performance and no layout shif
   `animate-accordion-up`) are defined in `theme.css`. Dialog and dropdown transitions use
   Tailwind v4's built-in animation utilities.
 
+## Per-market theming
+
+Odyssey is designed to expand to multiple countries/brands. The two-layer token architecture
+makes this safe:
+
+1. **Primitive tokens** (`--brand-*`, `--accent-*`, `--neutral-*`) are stable and shared.
+   Markets never touch these.
+2. **Semantic tokens** (`--primary`, `--background`, `--accent-role`, ...) map primitives to
+   roles. A market overrides **only these** in both `:root` (light) and `.dark`.
+
+### How to theme a new market
+
+1. Copy the template:
+   `packages/ui/src/styles/market-theme.template.css` → `apps/<market>/app/market-theme.css`
+2. Uncomment and change only the tokens that differ from the base theme.
+3. Import it in `globals.css` right after the base theme:
+
+   ```css
+   @import '@odyssey/ui/styles.css';
+   @import './market-theme.css';
+   ```
+
+4. Run a WCAG contrast audit on every overridden pairing (see "Contrast audit" above).
+
+The Albania app (`apps/albanie`) ships with an empty market-theme because the base Odyssey
+palette was designed for it. Future markets (Greece, Montenegro, ...) will override
+`--primary`, `--ring`, and possibly `--accent-role` to match their identity.
+
 ## Usage guidance
 
 - Reference **semantic** utilities (`bg-background`, `text-foreground`, `bg-primary`,
