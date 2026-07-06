@@ -1,0 +1,60 @@
+/* ============================================================
+   Market Theme Template — Odyssey
+   ============================================================
+   Copy this file to your app (e.g. apps/<market>/app/market-theme.css)
+   and override ONLY the semantic tokens below. Import it in globals.css
+   AFTER the base theme:
+
+     @import '@odyssey/ui/styles.css';
+     @import './market-theme.css';
+
+   RULES:
+   - Override semantic tokens only, never primitive scales (--brand-*, etc.).
+   - Keep both :root (light) and .dark overrides in sync.
+   - Every foreground token paired with its surface MUST meet WCAG AA
+     contrast (>= 4.5:1 text, >= 3:1 non-text/large text).
+   - Run the contrast audit after changes (see docs/design-system.md).
+
+   The base Odyssey theme (Adriatic teal + Sun amber) ships from
+   @odyssey/ui/styles.css. If your market is happy with the base
+   palette, leave this file empty or remove the overrides.
+   ============================================================ */
+
+:root {
+  /* -- Brand surface & text -- */
+  /* --primary: var(--brand-600); */
+  /* --primary-foreground: var(--neutral-50); */
+
+  /* -- Accent / CTA -- */
+  /* --accent-role: var(--accent-500); */
+  /* --accent-role-foreground: var(--neutral-950); */
+
+  /* -- Surfaces -- */
+  /* --background: var(--neutral-50); */
+  /* --foreground: var(--neutral-900); */
+  /* --card: #ffffff; */
+  /* --card-foreground: var(--neutral-900); */
+  /* --popover: #ffffff; */
+  /* --popover-foreground: var(--neutral-900); */
+
+  /* -- Muted / secondary -- */
+  /* --secondary: var(--neutral-100); */
+  /* --secondary-foreground: var(--neutral-900); */
+  /* --muted: var(--neutral-100); */
+  /* --muted-foreground: var(--neutral-600); */
+
+  /* -- Borders & focus -- */
+  /* --border: var(--neutral-200); */
+  /* --input: var(--neutral-500); */
+  /* --ring: var(--brand-500); */
+
+  /* -- Destructive -- */
+  /* --destructive: var(--error); */
+  /* --destructive-foreground: var(--neutral-50); */
+}
+
+.dark {
+  /* Repeat the same tokens here for dark mode overrides. */
+  /* --primary: var(--brand-400); */
+  /* --primary-foreground: var(--neutral-950); */
+}
