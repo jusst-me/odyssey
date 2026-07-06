@@ -2,7 +2,7 @@ import { Button } from '@odyssey/ui';
 
 export default function HomePage() {
   return (
-    <main className="mx-auto flex min-h-dvh max-w-3xl flex-col justify-center gap-6 px-6 py-24">
+    <main className="mx-auto flex max-w-3xl flex-1 flex-col justify-center gap-6 px-6 py-24">
       <p className="text-primary text-sm font-medium uppercase tracking-widest">
         Odyssey · Albanië
       </p>
