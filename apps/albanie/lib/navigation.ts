@@ -1,4 +1,4 @@
-import type { TopBarLink } from '@odyssey/ui';
+import type { TopBarLink, FooterLinkColumn } from '@odyssey/ui';
 
 export const topBarConfig = {
   tagline: 'Onafhankelijke reisgids · sinds 2019 · 1 EUR ≈ 98 Lek',
@@ -59,26 +59,46 @@ export const mainNavItems: NavItem[] = [
   { label: 'Blog', href: '/blog' },
 ];
 
-export const footerLinks = {
-  bestemmingen: [
-    { label: 'Albanese Riviera', href: '/bestemmingen/riviera' },
-    { label: 'Ksamil & Saranda', href: '/bestemmingen/ksamil-saranda' },
-    { label: 'Theth & Valbona', href: '/bestemmingen/theth-valbona' },
-    { label: 'Berat & Gjirokastër', href: '/bestemmingen/berat-gjirokaster' },
-    { label: 'Tirana', href: '/bestemmingen/tirana-shkoder' },
-  ],
-  praktisch: [
-    { label: 'Visum & inreizen', href: '/praktisch/visum' },
-    { label: 'Reisbudget', href: '/praktisch/reisbudget' },
-    { label: 'Veiligheid', href: '/praktisch/veiligheid' },
-    { label: 'Beste reistijd', href: '/praktisch/beste-reistijd' },
-    { label: 'Auto huren', href: '/vervoer/auto-huren' },
-  ],
-  odyssey: [
-    { label: 'Over ons', href: '/over-ons' },
-    { label: 'Nieuwsbrief', href: '#nieuwsbrief' },
-    { label: 'Contact', href: '/contact' },
-    { label: 'Affiliate-disclosure', href: '/affiliate-disclosure' },
-    { label: 'Privacy & cookies', href: '/privacy' },
-  ],
+export const footerConfig = {
+  brand: {
+    name: 'BUKURA',
+    subtitle: 'Albanië reisgids',
+    description:
+      'Onafhankelijke Nederlandstalige reisgids over Albanië. Geschreven door reizigers die het land écht kennen — niet door een algoritme.',
+  },
+  columns: [
+    {
+      title: 'Bestemmingen',
+      links: [
+        { label: 'Albanese Riviera', href: '/bestemmingen/riviera' },
+        { label: 'Ksamil & Saranda', href: '/bestemmingen/ksamil-saranda' },
+        { label: 'Theth & Valbona', href: '/bestemmingen/theth-valbona' },
+        { label: 'Berat & Gjirokastër', href: '/bestemmingen/berat-gjirokaster' },
+        { label: 'Tirana', href: '/bestemmingen/tirana-shkoder' },
+      ],
+    },
+    {
+      title: 'Praktisch',
+      links: [
+        { label: 'Visum & inreizen', href: '/praktisch/visum' },
+        { label: 'Reisbudget', href: '/praktisch/reisbudget' },
+        { label: 'Veiligheid', href: '/praktisch/veiligheid' },
+        { label: 'Beste reistijd', href: '/praktisch/beste-reistijd' },
+        { label: 'Auto huren', href: '/vervoer/auto-huren' },
+      ],
+    },
+    {
+      title: 'Bukura',
+      links: [
+        { label: 'Over ons', href: '/over-ons' },
+        { label: 'Nieuwsbrief', href: '#nieuwsbrief' },
+        { label: 'Contact', href: '/contact' },
+        { label: 'Affiliate-disclosure', href: '/affiliate-disclosure' },
+        { label: 'Privacy & cookies', href: '/privacy' },
+      ],
+    },
+  ] satisfies FooterLinkColumn[],
+  copyright: '© 2026 Bukura Reisgids · Een onafhankelijk reisproject',
+  affiliateDisclosure:
+    'Sommige links zijn affiliate-links. Jij betaalt niets extra; wij verdienen een kleine commissie.',
 };

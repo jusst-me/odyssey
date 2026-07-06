@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { TopBar } from '@odyssey/ui';
-import type { TopBarLink } from '@odyssey/ui';
+import { TopBar, SiteFooter } from '@odyssey/ui';
+import type { TopBarLink, FooterLinkColumn } from '@odyssey/ui';
 
 import { SiteHeader } from './site-header';
 import { MobileNav } from './mobile-nav';
@@ -11,10 +11,16 @@ import type { NavItem } from '../lib/navigation';
 interface LayoutShellProps {
   topBar: { tagline: string; links: TopBarLink[] };
   navItems: NavItem[];
+  footer: {
+    brand: { name: string; subtitle: string; description: string };
+    columns: FooterLinkColumn[];
+    copyright: string;
+    affiliateDisclosure?: string;
+  };
   children: React.ReactNode;
 }
 
-export function LayoutShell({ topBar, navItems, children }: LayoutShellProps) {
+export function LayoutShell({ topBar, navItems, footer, children }: LayoutShellProps) {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   return (
@@ -27,6 +33,12 @@ export function LayoutShell({ topBar, navItems, children }: LayoutShellProps) {
       />
       <MobileNav items={navItems} open={mobileNavOpen} onOpenChange={setMobileNavOpen} />
       {children}
+      <SiteFooter
+        brand={footer.brand}
+        columns={footer.columns}
+        copyright={footer.copyright}
+        affiliateDisclosure={footer.affiliateDisclosure}
+      />
     </>
   );
 }

@@ -82,3 +82,5 @@ export {
   NavigationMenuViewport,
   navigationMenuTriggerStyle,
 } from './components/navigation-menu';
+
+export { SiteFooter, type FooterLinkColumn, type SiteFooterProps } from './components/site-footer';
