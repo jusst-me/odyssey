@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import { Fraunces, Inter } from 'next/font/google';
 import './globals.css';
 
+import { TopBar } from '@odyssey/ui';
+import { topBarConfig } from '../lib/navigation';
+
 const fraunces = Fraunces({
   subsets: ['latin'],
   variable: '--font-fraunces',
@@ -26,7 +29,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="nl" className={`${fraunces.variable} ${inter.variable}`}>
-      <body>{children}</body>
+      <body>
+        <TopBar tagline={topBarConfig.tagline} links={topBarConfig.links} />
+        {children}
+      </body>
     </html>
   );
 }
