@@ -23,7 +23,7 @@ export function LayoutShell({ topBar, navItems, children }: LayoutShellProps) {
       <SiteHeader
         items={navItems}
         mobileMenuOpen={mobileNavOpen}
-        onMobileMenuToggle={() => setMobileNavOpen(true)}
+        onMobileMenuToggle={() => setMobileNavOpen((prev) => !prev)}
       />
       <MobileNav items={navItems} open={mobileNavOpen} onOpenChange={setMobileNavOpen} />
       {children}
