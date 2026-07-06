@@ -101,7 +101,7 @@ function NavigationMenuViewport({
   ...props
 }: React.ComponentProps<typeof NavigationMenuPrimitive.Viewport>) {
   return (
-    <div className={cn('absolute left-0 top-full isolate z-50 flex justify-center')}>
+    <div className={cn('absolute top-full isolate z-50 flex justify-center')}>
       <NavigationMenuPrimitive.Viewport
         data-slot="navigation-menu-viewport"
         className={cn(
