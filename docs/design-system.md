@@ -175,6 +175,9 @@ Loaded via `next/font/google` per app for optimal performance and no layout shif
 - **Radius**: `--radius-sm 0.25rem`, `--radius-md 0.5rem`, `--radius-lg 0.75rem`,
   `--radius-xl 1rem`, `--radius-full 9999px`. Base `--radius` = `0.5rem`.
 - **Shadows**: subtle, warm-tinted elevation — `--shadow-sm`, `--shadow-md`, `--shadow-lg`.
+- **Animations**: accordion open/close keyframes (`animate-accordion-down`,
+  `animate-accordion-up`) are defined in `theme.css`. Dialog and dropdown transitions use
+  Tailwind v4's built-in animation utilities.
 
 ## Usage guidance
 
