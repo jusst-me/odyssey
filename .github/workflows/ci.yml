@@ -17,6 +17,10 @@ permissions:
 env:
   TURBO_TELEMETRY_DISABLED: 1
   DO_NOT_TRACK: 1
+  # Turborepo remote cache (Vercel). Turbo uses it automatically when these
+  # are set; if the secret/var are absent it simply runs uncached (no error).
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: ${{ vars.TURBO_TEAM }}
 
 jobs:
   # Single job so we install dependencies once and skip the (heavier) E2E
@@ -40,15 +44,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
-      # Cross-run Turborepo cache (until remote caching lands — JUS-48).
-      - name: Restore Turbo cache
-        uses: actions/cache@v4
-        with:
-          path: .turbo
-          key: turbo-${{ runner.os }}-${{ github.sha }}
-          restore-keys: |
-            turbo-${{ runner.os }}-
 
       - name: Check formatting
         run: pnpm format:check
