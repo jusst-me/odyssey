@@ -35,7 +35,7 @@ export function SiteHeader({ items, onMobileMenuToggle }: SiteHeaderProps) {
           </span>
         </Link>
 
-        <NavigationMenu className="hidden lg:flex">
+        <NavigationMenu viewport={false} className="hidden lg:flex">
           <NavigationMenuList>
             {items.map((item) =>
               item.children ? (
