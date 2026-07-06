@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { Fraunces, Inter } from 'next/font/google';
 import './globals.css';
 
-import { topBarConfig, mainNavItems } from '../lib/navigation';
+import { SiteFooter } from '@odyssey/ui';
+import { topBarConfig, mainNavItems, footerLinks } from '../lib/navigation';
 import { LayoutShell } from '../components/layout-shell';
 
 const fraunces = Fraunces({
@@ -33,6 +34,21 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <LayoutShell topBar={topBarConfig} navItems={mainNavItems}>
           {children}
         </LayoutShell>
+        <SiteFooter
+          brand={{
+            name: 'BUKURA',
+            subtitle: 'Albanië reisgids',
+            description:
+              'Onafhankelijke Nederlandstalige reisgids over Albanië. Geschreven door reizigers die het land écht kennen — niet door een algoritme.',
+          }}
+          columns={[
+            { title: 'Bestemmingen', links: footerLinks.bestemmingen },
+            { title: 'Praktisch', links: footerLinks.praktisch },
+            { title: 'Bukura', links: footerLinks.odyssey },
+          ]}
+          copyright="© 2026 Bukura Reisgids · Een onafhankelijk reisproject"
+          affiliateDisclosure="Sommige links zijn affiliate-links. Jij betaalt niets extra; wij verdienen een kleine commissie."
+        />
       </body>
     </html>
   );
