@@ -12,7 +12,7 @@ import {
   NavigationMenuTrigger,
 } from '@odyssey/ui';
 
-import type { NavItem } from '../lib/navigation';
+import type { NavItem } from '@odyssey/cms';
 
 interface SiteHeaderProps {
   items: NavItem[];

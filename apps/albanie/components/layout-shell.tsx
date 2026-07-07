@@ -6,7 +6,7 @@ import type { TopBarLink, FooterLinkColumn } from '@odyssey/ui';
 
 import { SiteHeader } from './site-header';
 import { MobileNav } from './mobile-nav';
-import type { NavItem } from '../lib/navigation';
+import type { NavItem } from '@odyssey/cms';
 
 interface LayoutShellProps {
   topBar: { tagline: string; links: TopBarLink[] };

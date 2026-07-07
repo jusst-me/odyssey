@@ -1,13 +1,7 @@
 import type { SchemaTypeDefinition } from 'sanity';
+import { siteSettingsSchemaTypes } from './site-settings';
 
-/**
- * Registry of Sanity document/object schemas for the shared Odyssey dataset.
- *
- * Intentionally empty for now — concrete content models (pages, blog posts,
- * destinations, categories, authors) are tracked as Linear tickets and will be
- * added here. Each market-scoped document must include `marketField`
- * (see ./market-field.ts).
- */
-export const schemaTypes: SchemaTypeDefinition[] = [];
+export const schemaTypes: SchemaTypeDefinition[] = [...siteSettingsSchemaTypes];
 
 export { marketField } from './market-field';
+export { siteSettings } from './site-settings';
