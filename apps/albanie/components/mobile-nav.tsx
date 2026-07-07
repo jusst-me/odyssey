@@ -14,7 +14,7 @@ import {
   Button,
 } from '@odyssey/ui';
 
-import type { NavItem } from '../lib/navigation';
+import type { NavItem } from '@odyssey/cms';
 
 interface MobileNavProps {
   items: NavItem[];

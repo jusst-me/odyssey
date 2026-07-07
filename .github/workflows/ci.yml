@@ -21,6 +21,9 @@ env:
   # are set; if the secret/var are absent it simply runs uncached (no error).
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
   TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+  # Sanity — project ID is public; read-only access is sufficient for builds.
+  NEXT_PUBLIC_SANITY_PROJECT_ID: iar2z8x1
+  NEXT_PUBLIC_SANITY_DATASET: production
 
 jobs:
   # Single job so we install dependencies once and skip the (heavier) E2E

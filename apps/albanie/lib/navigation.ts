@@ -1,4 +1,5 @@
 import type { TopBarLink, FooterLinkColumn } from '@odyssey/ui';
+import type { NavItem } from '@odyssey/cms';
 
 export const topBarConfig = {
   tagline: 'Onafhankelijke reisgids · sinds 2019 · 1 EUR ≈ 98 Lek',
@@ -8,12 +9,6 @@ export const topBarConfig = {
     { label: 'Over ons', href: '/over-ons' },
   ] satisfies TopBarLink[],
 };
-
-export interface NavItem {
-  label: string;
-  href: string;
-  children?: { label: string; href: string }[];
-}
 
 export const mainNavItems: NavItem[] = [
   {
