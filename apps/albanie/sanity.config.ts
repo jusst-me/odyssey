@@ -9,6 +9,7 @@ export default defineConfig({
   title: 'Odyssey — Albanië',
   projectId,
   dataset,
+  basePath: '/studio',
   plugins: [structureTool()],
   schema: {
     types: schemaTypes,
