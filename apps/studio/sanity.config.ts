@@ -7,12 +7,11 @@ import { schemaTypes } from '@odyssey/cms/schema';
  * Standalone Sanity Studio voor het gehele Odyssey platform.
  * Eén Studio beheert content voor alle markets via het `market`-veld.
  *
- * Env vars worden gelezen uit de root `.env` (zie /.env.example).
- * In CI/productie: stel NEXT_PUBLIC_SANITY_PROJECT_ID en
- * NEXT_PUBLIC_SANITY_DATASET in als omgevingsvariabelen.
+ * De Studio draait op Vite en exposes alleen variabelen met het
+ * SANITY_STUDIO_-prefix aan de browser. Zie apps/studio/.env.example.
  */
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? '';
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET ?? 'production';
+const projectId = process.env.SANITY_STUDIO_PROJECT_ID ?? '';
+const dataset = process.env.SANITY_STUDIO_DATASET ?? 'production';
 
 export default defineConfig({
   name: 'odyssey-studio',
