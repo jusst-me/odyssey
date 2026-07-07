@@ -2,6 +2,7 @@
   "name": "@odyssey/studio",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "sanity dev --port 3333",
     "build": "sanity build",
