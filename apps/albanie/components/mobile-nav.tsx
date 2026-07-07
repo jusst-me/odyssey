@@ -27,7 +27,7 @@ export function MobileNav({ items, open, onOpenChange }: MobileNavProps) {
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent side="left" className="w-80 overflow-y-auto p-0" showCloseButton>
         <SheetTitle className="sr-only">Navigatiemenu</SheetTitle>
-        <div className="flex h-[4.625rem] items-center px-4">
+        <div className="h-18.5 flex items-center px-4">
           <Link href="/" className="flex items-center gap-3" onClick={() => onOpenChange(false)}>
             <span className="bg-primary font-display text-primary-foreground flex size-9 items-center justify-center rounded-md text-lg font-bold">
               B

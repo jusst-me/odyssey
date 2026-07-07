@@ -1,0 +1,9 @@
+{
+  "extends": "@odyssey/config/tsconfig/base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "jsx": "react-jsx"
+  },
+  "include": ["sanity.config.ts"],
+  "exclude": ["node_modules", "dist"]
+}

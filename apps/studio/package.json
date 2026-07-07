@@ -1,0 +1,28 @@
+{
+  "name": "@odyssey/studio",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "sanity dev --port 3333",
+    "build": "sanity build",
+    "start": "sanity start",
+    "lint": "eslint .",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@odyssey/cms": "workspace:*",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sanity": "^3.99.0",
+    "styled-components": "^6.4.3"
+  },
+  "devDependencies": {
+    "@odyssey/config": "workspace:*",
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.18.0",
+    "typescript": "^5.7.3"
+  }
+}

@@ -22,8 +22,8 @@ interface SiteHeaderProps {
 
 export function SiteHeader({ items, mobileMenuOpen, onMobileMenuToggle }: SiteHeaderProps) {
   return (
-    <header className="border-border bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 border-b backdrop-blur-sm">
-      <div className="mx-auto flex h-[4.625rem] max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
+    <header className="border-border bg-background/95 supports-backdrop-filter:bg-background/60 sticky top-0 z-50 border-b backdrop-blur-sm">
+      <div className="h-18.5 mx-auto flex max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex shrink-0 items-center gap-3">
           <span className="bg-primary font-display text-primary-foreground flex size-9 items-center justify-center rounded-md text-lg font-bold">
             B
