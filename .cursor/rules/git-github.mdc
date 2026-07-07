@@ -23,6 +23,12 @@ Version control is GitHub. Keep history clean and reviewable.
 > follow Conventional Commits (see below), so a `feature/` branch can contain `chore:` or
 > `docs:` commits.
 
+## Language
+
+**All commit messages, PR descriptions, code comments, and inline documentation MUST
+be written in English. No exceptions — this applies to AI agents and human contributors
+alike. Dutch (or any other language) is never acceptable in version-controlled text.**
+
 ## Commits
 
 **All commits — including every commit made by an AI agent — MUST follow the
