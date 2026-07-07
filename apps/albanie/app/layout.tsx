@@ -2,9 +2,6 @@ import type { Metadata } from 'next';
 import { Fraunces, Inter } from 'next/font/google';
 import './globals.css';
 
-import { topBarConfig, mainNavItems, footerConfig } from '../lib/navigation';
-import { LayoutShell } from '../components/layout-shell';
-
 const fraunces = Fraunces({
   subsets: ['latin'],
   variable: '--font-fraunces',
@@ -29,11 +26,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="nl" className={`${fraunces.variable} ${inter.variable}`}>
-      <body className="flex min-h-dvh flex-col">
-        <LayoutShell topBar={topBarConfig} navItems={mainNavItems} footer={footerConfig}>
-          {children}
-        </LayoutShell>
-      </body>
+      <body className="flex min-h-dvh flex-col">{children}</body>
     </html>
   );
 }
