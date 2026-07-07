@@ -1,5 +1,6 @@
 import groq from 'groq';
 import { sanityClient } from './client';
+import { projectId } from './env';
 import type { Market, SiteSettings } from './types';
 
 /**
@@ -18,9 +19,11 @@ export async function fetchByMarket<T>(
 
 /**
  * Fetch the singleton siteSettings document for a given market.
- * Returns null when no document exists yet in Sanity (e.g. during initial setup).
+ * Returns null when no document exists yet in Sanity (e.g. during initial
+ * setup) or when the projectId env var is not configured (CI / cold start).
  */
 export async function fetchSiteSettings(market: Market): Promise<SiteSettings | null> {
+  if (!projectId) return null;
   const query = groq`
     *[_type == "siteSettings" && market == $market][0]{
       market,
