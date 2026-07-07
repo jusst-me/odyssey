@@ -19,11 +19,26 @@ const navItem = defineType({
   type: 'object',
   title: 'Navigation item',
   fields: [
-    ...linkFields,
+    defineField({ name: 'label', type: 'string', title: 'Label', validation: (r) => r.required() }),
+    defineField({
+      name: 'href',
+      type: 'string',
+      title: 'URL',
+      description: 'Required when there are no dropdown items.',
+      validation: (r) =>
+        r.custom((href, ctx) => {
+          const children = (ctx.parent as { children?: unknown[] } | undefined)?.children;
+          if (!href && (!children || children.length === 0)) {
+            return 'Provide a URL or at least one dropdown item.';
+          }
+          return true;
+        }),
+    }),
     defineField({
       name: 'children',
       type: 'array',
       title: 'Dropdown items',
+      description: 'When filled, the URL above is used as the "view all" link (optional).',
       of: [{ type: 'object', fields: linkFields, preview: { select: { title: 'label' } } }],
     }),
   ],
