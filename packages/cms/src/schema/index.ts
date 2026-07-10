@@ -1,8 +1,17 @@
 import type { SchemaTypeDefinition } from 'sanity';
-import { siteSettingsSchemaTypes } from './site-settings';
-import { article } from './articles';
+import { siteSettingsSchemaTypes } from './types/site-settings';
+import { article } from './types/article';
+import { city } from './types/city';
+import { location } from './types/location';
+import { route } from './types/route';
 
-export const schemaTypes: SchemaTypeDefinition[] = [...siteSettingsSchemaTypes, article];
+export const schemaTypes: SchemaTypeDefinition[] = [
+  ...siteSettingsSchemaTypes,
+  article,
+  city,
+  location,
+  route,
+];
 
-export { marketField } from './market-field';
-export { siteSettings } from './site-settings';
+export { marketField } from './fields/market-field';
+export { siteSettings } from './types/site-settings';

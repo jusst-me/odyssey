@@ -1,5 +1,6 @@
 import { defineField, defineType, type SchemaTypeDefinition } from 'sanity';
-import { marketField } from './market-field';
+import { marketField } from '../fields/market-field';
+import { CogIcon } from '@sanity/icons/Cog';
 
 const linkFields = [
   defineField({ name: 'label', type: 'string', title: 'Label', validation: (r) => r.required() }),
@@ -49,6 +50,7 @@ export const siteSettings = defineType({
   name: 'siteSettings',
   type: 'document',
   title: 'Site Settings',
+  icon: CogIcon,
   fields: [
     marketField,
 

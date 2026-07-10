@@ -1,5 +1,5 @@
 import { defineField } from 'sanity';
-import { MARKETS } from '../types';
+import { MARKETS } from '../../types';
 
 /**
  * Reusable `market` field. EVERY market-scoped document type must spread this in
@@ -9,6 +9,7 @@ export const marketField = defineField({
   name: 'market',
   title: 'Market',
   type: 'string',
+  hidden: true,
   options: {
     list: MARKETS.map((m) => ({ title: m, value: m })),
     layout: 'dropdown',
