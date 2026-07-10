@@ -6,7 +6,7 @@ import { topBarConfig, mainNavItems, footerConfig } from '../../lib/navigation';
 export const revalidate = 60;
 
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {
-  const settings = await fetchSiteSettings('albanie');
+  const settings = await fetchSiteSettings('albania');
 
   const topBar = settings?.topBar ?? topBarConfig;
   const navItems = settings?.mainNav ?? mainNavItems;
