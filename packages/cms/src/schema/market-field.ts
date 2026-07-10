@@ -11,8 +11,8 @@ export const marketField = defineField({
   type: 'string',
   options: {
     list: MARKETS.map((m) => ({ title: m, value: m })),
-    layout: 'radio',
+    layout: 'dropdown',
   },
-  initialValue: 'albanie',
+  initialValue: 'albania',
   validation: (rule) => rule.required(),
 });

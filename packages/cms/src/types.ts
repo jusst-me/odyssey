@@ -3,7 +3,14 @@
  * dataset is tagged with a market so a single Sanity project can power many apps.
  * Add new markets here as the platform expands.
  */
-export const MARKETS = ['albanie'] as const;
+export const MARKETS = [
+  'albania',
+  'greece',
+  'macedonia',
+  'montenegro',
+  'serbia',
+  'turkey',
+] as const;
 
 export type Market = (typeof MARKETS)[number];
 

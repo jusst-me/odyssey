@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity';
+import { defineField, defineType, type SchemaTypeDefinition } from 'sanity';
 import { marketField } from './market-field';
 
 const linkFields = [
@@ -141,4 +141,4 @@ export const siteSettings = defineType({
   },
 });
 
-export const siteSettingsSchemaTypes = [siteSettings, linkItem, navItem];
+export const siteSettingsSchemaTypes: SchemaTypeDefinition[] = [siteSettings, linkItem, navItem];
