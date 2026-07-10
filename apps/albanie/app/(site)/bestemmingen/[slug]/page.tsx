@@ -368,8 +368,14 @@ export default async function LocationDetailPage({ params }: PageProps) {
 
           <div className="max-w-3xl space-y-4">
             <div className="flex flex-wrap gap-2">
-              <Badge variant="secondary">{locationTypeLabels[location.locationType]}</Badge>
-              {isFullGuide ? <Badge variant="outline">Redactionele guide</Badge> : null}
+              <Badge variant="secondary" className="bg-primary-foreground text-neutral-900">
+                {locationTypeLabels[location.locationType]}
+              </Badge>
+              {isFullGuide ? (
+                <Badge variant="secondary" className="bg-primary-foreground text-neutral-900">
+                  Redactionele guide
+                </Badge>
+              ) : null}
             </div>
             <h1 id="location-heading" className="text-primary-foreground text-4xl md:text-5xl">
               {location.name}

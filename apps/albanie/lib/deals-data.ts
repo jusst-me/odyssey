@@ -444,6 +444,10 @@ export function editorPicks(vertical: DealVertical, limit = 3): NativeOffer[] {
     .slice(0, limit);
 }
 
+export function getOfferById(id: string): NativeOffer | undefined {
+  return nativeOffers.find((o) => o.id === id);
+}
+
 export function isDealRegion(value: string): value is DealRegion {
   return dealRegions.some((r) => r.id === value);
 }
@@ -486,3 +490,6 @@ export function buildDealsHref(
 
 export const affiliateDisclosure =
   'Sommige links op deze pagina zijn affiliate-links. Je betaalt niets extra; wij verdienen een commissie. Onze selectie blijft redactioneel — geen betaalde rankings.';
+
+export const articleAffiliateDisclosure =
+  'Affiliate-links in dit artikel zijn contextueel gekozen — geen betaalde plaatsingen. Volgorde en selectie zijn redactioneel.';
