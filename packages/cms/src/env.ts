@@ -13,7 +13,7 @@ export const dataset =
 export const apiVersion =
   process.env.NEXT_PUBLIC_SANITY_API_VERSION ??
   process.env.SANITY_STUDIO_API_VERSION ??
-  '2025-01-01';
+  '2026-05-15';
 
 /** Studio route mounted inside apps (e.g. /studio). */
 export const studioBasePath = '/studio';
