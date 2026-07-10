@@ -35,7 +35,7 @@ function SiteFooter({
       className={cn('bg-foreground text-neutral-200', className)}
       {...props}
     >
-      <div className="mx-auto max-w-7xl px-4 pb-8 pt-16 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 pt-16 pb-8 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
           {/* Brand column */}
           <div>
@@ -43,9 +43,9 @@ function SiteFooter({
               <span className="bg-primary font-display text-primary-foreground flex size-9 items-center justify-center rounded-md text-lg font-bold">
                 {brand.name.charAt(0)}
               </span>
-              <span className="font-display text-card text-lg font-bold leading-tight tracking-tight">
+              <span className="font-display text-card text-lg leading-tight font-bold tracking-tight">
                 {brand.name}
-                <small className="text-brand-400 block text-[0.6rem] font-semibold uppercase tracking-[0.32em]">
+                <small className="text-brand-400 block text-[0.6rem] font-semibold tracking-[0.32em] uppercase">
                   {brand.subtitle}
                 </small>
               </span>
@@ -59,7 +59,7 @@ function SiteFooter({
           {/* Link columns */}
           {columns.map((col) => (
             <div key={col.title}>
-              <h4 className="font-display text-card mb-4 text-xs font-semibold uppercase tracking-[0.16em]">
+              <h4 className="font-display text-card mb-4 text-xs font-semibold tracking-[0.16em] uppercase">
                 {col.title}
               </h4>
               <ul className="space-y-1">

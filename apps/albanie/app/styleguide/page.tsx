@@ -58,7 +58,7 @@ export default function StyleguidePage() {
   return (
     <main className="mx-auto max-w-4xl space-y-12 px-6 py-12">
       <header>
-        <p className="text-primary text-sm font-medium uppercase tracking-widest">Odyssey</p>
+        <p className="text-primary text-sm font-medium tracking-widest uppercase">Odyssey</p>
         <h1 className="text-4xl">Component Styleguide</h1>
         <p className="text-muted-foreground text-lg">
           Visueel overzicht van alle gedeelde UI-primitieven uit <code>@odyssey/ui</code>.

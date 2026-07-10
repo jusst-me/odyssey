@@ -5,5 +5,5 @@
 @import '@odyssey/ui/styles.css';
 @import './market-theme.css';
 
-@source "../../../packages/ui/src";
-@source "../app";
+@source '../../../packages/ui/src';
+@source '../app';
