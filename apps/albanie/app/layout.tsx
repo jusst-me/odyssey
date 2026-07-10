@@ -25,7 +25,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="nl" className={`${fraunces.variable} ${inter.variable}`}>
+    <html
+      lang="nl"
+      className={`${fraunces.variable} ${inter.variable} scroll-smooth motion-reduce:scroll-auto`}
+    >
       <body className="flex min-h-dvh flex-col">{children}</body>
     </html>
   );

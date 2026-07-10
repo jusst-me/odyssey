@@ -18,6 +18,16 @@ export const location = defineType({
       validation: (rule) => rule.required(),
       options: { source: 'name' },
     }),
+    defineField({
+      name: 'locationType',
+      type: 'string',
+      title: 'Location Type',
+      options: {
+        list: ['city', 'beach', 'region', 'mountain', 'lake', 'river', 'other'],
+        layout: 'dropdown',
+      },
+      validation: (rule) => rule.required(),
+    }),
     seo,
   ],
 });

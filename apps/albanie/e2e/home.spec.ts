@@ -9,7 +9,7 @@ test.describe('Homepage', () => {
 
   test('exposes the primary call-to-action buttons', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByRole('button', { name: 'Primary' })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Bekijk bestemmingen' })).toBeVisible();
   });
 
   test('has no detectable WCAG A/AA accessibility violations', async ({ page }) => {

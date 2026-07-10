@@ -32,18 +32,6 @@ export const buildStructure = (S: StructureBuilder) => {
                   ]),
               ),
             S.listItem()
-              .title('Cities')
-              .schemaType('city')
-              .child(
-                S.documentTypeList('city')
-                  .title('Cities')
-                  .filter('_type == "city" && market == $market')
-                  .params({ market })
-                  .initialValueTemplates([
-                    S.initialValueTemplateItem('city-by-market', { market }),
-                  ]),
-              ),
-            S.listItem()
               .title('Locations')
               .schemaType('location')
               .child(
