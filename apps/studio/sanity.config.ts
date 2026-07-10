@@ -46,6 +46,27 @@ export default defineConfig({
         parameters: [{ name: 'market', title: 'Market', type: 'string' }],
         value: (params: { market: string }) => ({ market: params.market }),
       },
+      {
+        id: 'city-by-market',
+        title: 'City',
+        schemaType: 'city',
+        parameters: [{ name: 'market', title: 'Market', type: 'string' }],
+        value: (params: { market: string }) => ({ market: params.market }),
+      },
+      {
+        id: 'location-by-market',
+        title: 'Location',
+        schemaType: 'location',
+        parameters: [{ name: 'market', title: 'Market', type: 'string' }],
+        value: (params: { market: string }) => ({ market: params.market }),
+      },
+      {
+        id: 'route-by-market',
+        title: 'Route',
+        schemaType: 'route',
+        parameters: [{ name: 'market', title: 'Market', type: 'string' }],
+        value: (params: { market: string }) => ({ market: params.market }),
+      },
     ],
   },
 });
