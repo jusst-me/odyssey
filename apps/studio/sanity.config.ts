@@ -1,9 +1,9 @@
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
-import type { StructureBuilder } from 'sanity/structure';
 
 import { schemaTypes } from '@odyssey/cms/schema';
-import { MARKETS } from '@odyssey/cms';
+import { buildStructure } from './sanity-structure';
+import { visionTool } from '@sanity/vision';
 
 /**
  * Shared Sanity Studio for the entire Odyssey platform.
@@ -15,32 +15,6 @@ import { MARKETS } from '@odyssey/cms';
 const projectId = process.env.SANITY_STUDIO_PROJECT_ID ?? '';
 const dataset = process.env.SANITY_STUDIO_DATASET ?? 'production';
 
-function buildStructure(S: StructureBuilder) {
-  const marketItems = MARKETS.map((market) =>
-    S.listItem()
-      .title(market.charAt(0).toUpperCase() + market.slice(1))
-      .child(
-        S.list()
-          .title(market)
-          .items([
-            S.listItem()
-              .title('Site Settings')
-              .schemaType('siteSettings')
-              .child(
-                S.document()
-                  .schemaType('siteSettings')
-                  .documentId(`siteSettings-${market}`)
-                  .title('Site Settings'),
-              ),
-          ]),
-      ),
-  );
-
-  return S.list()
-    .title('Content')
-    .items([S.listItem().title('Markets').child(S.list().title('Markets').items(marketItems))]);
-}
-
 export default defineConfig({
   name: 'odyssey-studio',
   title: 'Odyssey Studio',
@@ -51,8 +25,20 @@ export default defineConfig({
     structureTool({
       structure: buildStructure,
     }),
+    visionTool(),
   ],
   schema: {
     types: schemaTypes,
+    // In Sanity v6, templates live under schema — not at the top level.
+    templates: (prev) => [
+      ...prev,
+      {
+        id: 'article-by-market',
+        title: 'Article',
+        schemaType: 'article',
+        parameters: [{ name: 'market', title: 'Market', type: 'string' }],
+        value: (params: { market: string }) => ({ market: params.market }),
+      },
+    ],
   },
 });
