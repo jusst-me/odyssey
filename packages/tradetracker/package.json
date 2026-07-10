@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@odyssey/config": "workspace:*",
-    "eslint": "^9.18.0",
-    "typescript": "^5.7.3"
+    "eslint": "catalog:",
+    "typescript": "catalog:"
   }
 }
