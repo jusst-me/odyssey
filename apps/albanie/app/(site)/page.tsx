@@ -3,7 +3,7 @@ import { Button } from '@odyssey/ui';
 export default function HomePage() {
   return (
     <main className="mx-auto flex max-w-3xl flex-1 flex-col justify-center gap-6 px-6 py-24">
-      <p className="text-primary text-sm font-medium uppercase tracking-widest">
+      <p className="text-primary text-sm font-medium tracking-widest uppercase">
         Odyssey · Albanië
       </p>
       <h1 className="text-foreground text-4xl">Fundament staat</h1>

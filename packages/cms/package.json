@@ -14,17 +14,17 @@
   },
   "dependencies": {
     "@sanity/client": "^6.24.1",
-    "groq": "^3.68.3"
+    "groq": "catalog:"
   },
   "devDependencies": {
     "@odyssey/config": "workspace:*",
-    "@types/node": "^22.10.5",
-    "eslint": "^9.18.0",
-    "sanity": "^3.68.3",
-    "typescript": "^5.7.3"
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "sanity": "catalog:",
+    "typescript": "catalog:"
   },
   "peerDependencies": {
-    "sanity": "^3.68.3"
+    "sanity": "catalog:"
   },
   "peerDependenciesMeta": {
     "sanity": {

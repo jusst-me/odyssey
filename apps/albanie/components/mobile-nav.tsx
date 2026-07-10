@@ -27,14 +27,14 @@ export function MobileNav({ items, open, onOpenChange }: MobileNavProps) {
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent side="left" className="w-80 overflow-y-auto p-0" showCloseButton>
         <SheetTitle className="sr-only">Navigatiemenu</SheetTitle>
-        <div className="h-18.5 flex items-center px-4">
+        <div className="flex h-18.5 items-center px-4">
           <Link href="/" className="flex items-center gap-3" onClick={() => onOpenChange(false)}>
             <span className="bg-primary font-display text-primary-foreground flex size-9 items-center justify-center rounded-md text-lg font-bold">
               B
             </span>
-            <span className="font-display text-lg font-bold leading-tight tracking-tight">
+            <span className="font-display text-lg leading-tight font-bold tracking-tight">
               BUKURA
-              <small className="text-primary block text-[0.6rem] font-semibold uppercase tracking-[0.32em]">
+              <small className="text-primary block text-[0.6rem] font-semibold tracking-[0.32em] uppercase">
                 Albanië reisgids
               </small>
             </span>
@@ -52,7 +52,7 @@ export function MobileNav({ items, open, onOpenChange }: MobileNavProps) {
                       <ChevronDown className="text-muted-foreground size-4 shrink-0 transition-transform duration-200" />
                     </span>
                   </AccordionTrigger>
-                  <AccordionContent className="pb-1 pt-0">
+                  <AccordionContent className="pt-0 pb-1">
                     <ul className="space-y-0.5 pl-3">
                       {item.children.map((child) => (
                         <li key={child.href}>

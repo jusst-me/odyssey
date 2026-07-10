@@ -1,5 +1,5 @@
 /**
- * Seeds the siteSettings document for the albanie market.
+ * Seeds the siteSettings document for the albania market.
  *
  * Run from the repo root:
  *   node --env-file=apps/studio/.env --experimental-strip-types scripts/seed-albanie-site-settings.ts
@@ -22,7 +22,7 @@ if (!projectId || !token) {
 const client = createClient({
   projectId,
   dataset,
-  apiVersion: '2025-01-01',
+  apiVersion: process.env.SANITY_STUDIO_API_VERSION ?? '2026-05-15',
   token,
   useCdn: false,
 });
@@ -35,9 +35,9 @@ function key(label: string) {
 }
 
 const document = {
-  _id: 'siteSettings-albanie',
+  _id: 'siteSettings-albania',
   _type: 'siteSettings',
-  market: 'albanie',
+  market: 'albania',
 
   topBar: {
     tagline: 'Onafhankelijke reisgids · sinds 2019 · 1 EUR ≈ 98 Lek',
@@ -209,4 +209,4 @@ const document = {
 };
 
 const result = await client.createOrReplace(document);
-console.log(`✓ siteSettings-albanie created/updated (rev: ${result._rev})`);
+console.log(`✓ siteSettings-albania created/updated (rev: ${result._rev})`);
