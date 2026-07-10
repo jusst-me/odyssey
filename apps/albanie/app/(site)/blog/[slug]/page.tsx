@@ -152,10 +152,10 @@ export default async function BlogArticlePage({ params }: PageProps) {
       </section>
 
       {/* Body */}
-      <section className="bg-background py-12 md:py-16">
-        <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[minmax(0,1fr)_240px] lg:gap-16">
+      <section className="bg-background overflow-x-clip py-12 md:py-16">
+        <div className="mx-auto grid max-w-6xl min-w-0 gap-12 px-6 lg:grid-cols-[minmax(0,1fr)_240px] lg:gap-16">
           <article
-            className={`mx-auto min-w-0 space-y-10 lg:mx-0 ${article.contentType === 'listicle' ? 'max-w-none' : 'max-w-3xl'}`}
+            className={`mx-auto min-w-0 space-y-10 overflow-x-clip lg:mx-0 ${article.contentType === 'listicle' ? 'max-w-none' : 'max-w-3xl'}`}
           >
             {article.contentType === 'prose' ? (
               <ArticleProse blocks={article.blocks} />
@@ -195,7 +195,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
             </p>
           </article>
 
-          <aside className="space-y-8 lg:sticky lg:top-24 lg:self-start">
+          <aside className="min-w-0 space-y-8 lg:sticky lg:top-24 lg:self-start">
             <ArticleSidebarNav items={navItems} />
 
             {article.relatedLocations.length > 0 ? (
