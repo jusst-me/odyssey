@@ -33,6 +33,13 @@ export default defineConfig({
     templates: (prev) => [
       ...prev,
       {
+        id: 'siteSettings-by-market',
+        title: 'Site Settings',
+        schemaType: 'siteSettings',
+        parameters: [{ name: 'market', title: 'Market', type: 'string' }],
+        value: (params: { market: string }) => ({ market: params.market }),
+      },
+      {
         id: 'article-by-market',
         title: 'Article',
         schemaType: 'article',

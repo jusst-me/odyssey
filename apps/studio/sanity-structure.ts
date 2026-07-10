@@ -16,7 +16,8 @@ export const buildStructure = (S: StructureBuilder) => {
                 S.document()
                   .schemaType('siteSettings')
                   .documentId(`siteSettings-${market}`)
-                  .title('Site Settings'),
+                  .title('Site Settings')
+                  .initialValueTemplate('siteSettings-by-market', { market }),
               ),
             S.listItem()
               .title('Articles')
