@@ -45,7 +45,7 @@ export function NativeOfferCard({ offer }: NativeOfferCardProps) {
 
         {offer.stars ? (
           <p className="text-muted-foreground flex items-center gap-1 text-xs">
-            <span className="flex" aria-label={`${offer.stars} sterren`}>
+            <span className="flex" role="img" aria-label={`${offer.stars} sterren`}>
               {Array.from({ length: offer.stars }).map((_, i) => (
                 <Star key={i} className="size-3 fill-current" aria-hidden="true" />
               ))}

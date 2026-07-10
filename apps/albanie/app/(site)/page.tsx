@@ -341,7 +341,7 @@ export default function HomePage() {
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary hover:text-primary/80 focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none"
+                className="text-brand-700 hover:text-brand-800 focus-visible:ring-ring underline underline-offset-4 focus-visible:ring-2 focus-visible:outline-none"
               >
                 @{INSTAGRAM_HANDLE}
               </a>
@@ -381,7 +381,7 @@ export default function HomePage() {
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary hover:text-primary/80 focus-visible:ring-ring inline-flex items-center gap-1 text-sm font-medium underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:outline-none"
+              className="text-brand-700 hover:text-brand-800 focus-visible:ring-ring inline-flex items-center gap-1 text-sm font-medium underline underline-offset-4 focus-visible:ring-2 focus-visible:outline-none"
             >
               Meer inspiratie op Instagram
               <ExternalLink className="size-4" aria-hidden="true" />
@@ -639,7 +639,7 @@ export default function HomePage() {
                       <p className="text-muted-foreground text-sm">{hotel.location}</p>
                     </div>
                     <p className="text-muted-foreground flex items-center gap-1 text-xs">
-                      <span className="flex" aria-label={`${hotel.stars} sterren`}>
+                      <span className="flex" role="img" aria-label={`${hotel.stars} sterren`}>
                         {Array.from({ length: hotel.stars }).map((_, i) => (
                           <Star key={i} className="size-3 fill-current" aria-hidden="true" />
                         ))}

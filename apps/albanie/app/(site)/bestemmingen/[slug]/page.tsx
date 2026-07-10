@@ -598,7 +598,7 @@ export default async function LocationDetailPage({ params }: PageProps) {
                         <p className="text-muted-foreground text-sm">{hotel.location}</p>
                       </div>
                       <p className="text-muted-foreground flex items-center gap-1 text-xs">
-                        <span className="flex" aria-label={`${hotel.stars} sterren`}>
+                        <span className="flex" role="img" aria-label={`${hotel.stars} sterren`}>
                           {Array.from({ length: hotel.stars }).map((_, i) => (
                             <Star key={i} className="size-3 fill-current" aria-hidden="true" />
                           ))}
